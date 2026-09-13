@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    /* ---------- Light Mode (Cream Theme) ---------- */
+    --color-cream-50: #fdfbf7; /* پس‌زمینه اصلی - کرم بسیار روشن */
+    --color-cream-100: #faf6ee; /* پس‌زمینه کارت‌ها */
+    --color-cream-200: #f5ede0; /* پس‌زمینه hover */
+    --color-cream-300: #ebe0cc; /* مرزها و خطوط */
+
+    --color-ink-900: #1a1612; /* متن اصلی - قهوه‌ای تیره */
+    --color-ink-700: #3d352c; /* متن تیتر */
+    --color-ink-500: #6b5f52; /* متن معمولی */
+    --color-ink-400: #8a7d6e; /* متن توضیحات */
+    --color-ink-300: #a89b8a; /* متن کم‌رنگ */
+
+    /* ---------- Dark Mode ---------- */
+    --color-night-950: #0d0d12; /* پس‌زمینه اصلی */
+    --color-night-900: #14141c; /* پس‌زمینه کارت‌ها */
+    --color-night-800: #1c1c28; /* پس‌زمینه hover */
+    --color-night-700: #2a2a3a; /* مرزها و خطوط */
+
+    /* ---------- Accent (Amber/Gold) ---------- */
+    --color-gold-300: #fcd34d;
+    --color-gold-400: #fbbf24;
+    --color-gold-500: #f59e0b; /* رنگ اصلی accent */
+    --color-gold-600: #d97706;
+
+    /* ---------- Semantic Colors ---------- */
+    --color-success: #22c55e;
+    --color-danger: #ef4444;
+    --color-info: #3b82f6;
+}
+
+html {
+    color-scheme: light dark;
+}
+
+body {
+    /* background-color: var(--color-cream-50);
+    color: var(--color-ink-900); */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.spinner {
+    margin: 4.75rem auto 1.6rem auto;
+    width: 40px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid var(--color-primary-900);
+    border-right-color: var(--color-primary-200);
+    animation: rotate 1s infinite linear;
+}
+
+.spinner-mini {
+    margin: 0;
+    width: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid var(--color-primary-200);
+    border-right-color: transparent;
+    animation: rotate 1s infinite linear;
+}
+
+
+/* =====================================================
+ANIMATIONS
+===================================================== */
+@keyframes rotate {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
