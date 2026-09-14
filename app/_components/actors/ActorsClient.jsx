@@ -18,7 +18,8 @@ function ActorsClient({ actors }) {
         <>
             <div className="grid grid-cols-3 md:grid-cols-6 my-6">
                 {visible.map((person) => (
-                    <div
+                    <Link
+                        href={`/actors/${person.id}`}
                         key={person.id}
                         className="flex flex-col gap-2 justify-center mx-auto"
                     >
@@ -44,7 +45,7 @@ function ActorsClient({ actors }) {
                                 {person.known_for_department}
                             </span>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
 

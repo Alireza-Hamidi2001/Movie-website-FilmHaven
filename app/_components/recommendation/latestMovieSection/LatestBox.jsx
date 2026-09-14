@@ -1,10 +1,12 @@
+import Link from "next/link";
 import { FaStar } from "react-icons/fa";
 
 function LatestBox({ items }) {
     return (
         <div className="overflow-auto grid grid-cols-5 gap-4">
             {items.map((item) => (
-                <div
+                <Link
+                    href={`/movies/${item.title}`}
                     key={item.id}
                     className="flex flex-col gap-3 items-center"
                 >
@@ -30,7 +32,7 @@ function LatestBox({ items }) {
                             )}
                         </p>
                     </div>
-                </div>
+                </Link>
             ))}
         </div>
     );

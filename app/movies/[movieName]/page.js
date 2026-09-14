@@ -8,7 +8,7 @@ async function page({ params }) {
 
     if (!movieSelected) return null;
     return (
-        <div>
+        <div className="min-h-screen">
             <CartDemo movieSelected={movieSelected} />
         </div>
     );

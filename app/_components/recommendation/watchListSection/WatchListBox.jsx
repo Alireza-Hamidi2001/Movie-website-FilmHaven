@@ -1,12 +1,14 @@
 import { FaStar } from "react-icons/fa";
 import WatchListDiscoverMoreBtn from "./WatchListDiscoverMoreBtn";
 import { BsCalendarDate } from "react-icons/bs";
+import Link from "next/link";
 
 function WatchListBox({ items, onDiscoverMore, loadingMore }) {
     return (
         <div className="grid grid-cols-3 gap-2">
             {items.map((item) => (
-                <div
+                <Link
+                href={`/movies/${item.title}`}
                     key={item.id}
                     className="flex gap-3 items-center"
                 >
@@ -35,7 +37,7 @@ function WatchListBox({ items, onDiscoverMore, loadingMore }) {
                             )}
                         </p>
                     </div>
-                </div>
+                </Link>
             ))}
 
             <WatchListDiscoverMoreBtn
