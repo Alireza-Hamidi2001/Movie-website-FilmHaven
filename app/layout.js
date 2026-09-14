@@ -4,13 +4,13 @@ import { Michroma, Sansation } from "next/font/google";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 
-export const metadata = {
-    title: {
-        default: "Film Haven",
-        template: "%s | Film Haven",
-    },
-    description: "Taste of Persia, From Persia with Love",
-};
+// export const metadata = {
+//     title: {
+//         default: "Film Haven",
+//         template: "%s | Film Haven",
+//     },
+//     description: "Taste of Persia, From Persia with Love",
+// };
 
 export const michroma = Michroma({ subsets: ["latin"], weight: "400" });
 export const sansation = Sansation({ subsets: ["latin"], weight: "400" });

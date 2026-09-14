@@ -2,7 +2,7 @@ import { getPopularPeople } from "@/lib/tmdb";
 import ActorsGrid from "./ActorsGrid";
 
 async function ActorsGridServer() {
-    const actors = await getPopularPeople(80);
+    const actors = await getPopularPeople(40);
 
     if (!actors?.length) {
         return (

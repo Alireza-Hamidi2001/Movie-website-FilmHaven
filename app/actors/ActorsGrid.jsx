@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 
 const GOLD = "#E8B463";
@@ -73,8 +74,9 @@ function ActorCard({ person, delay }) {
     const topKnownFor = person.known_for || "none";
 
     return (
-        <div
-            className="actor-card group flex flex-col items-center gap-3 text-center"
+        <Link
+            href={`/actors/${person.id}`}
+            className="actor-card p-8 group flex flex-col items-center gap-3 text-center"
             style={{ animationDelay: `${delay}s` }}
         >
             <div className="relative w-28 h-28 md:w-54 md:h-64">
@@ -116,15 +118,12 @@ function ActorCard({ person, delay }) {
                     {person.name}
                 </p>
                 <div className="flex gap-2 items-center justify-center mt-1.5">
-                    {/* <span className="text-xs bg-green-500/20 text-green-700 dark:text-green-400 font-medium rounded-full px-2 py-0.5">
-                        {person.popularity?.toFixed(1)}
-                    </span> */}
                     <span className="text-night-700/70 dark:text-cream-50/50 text-xs">
                         {person.known_for_department}
                     </span>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 }
 

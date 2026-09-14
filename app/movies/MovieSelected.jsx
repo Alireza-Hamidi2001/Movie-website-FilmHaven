@@ -16,7 +16,9 @@ export default async function MovieSelected({ movieSelected }) {
 
     return (
         <div className="relative mt-[4rem] h-[calc(100vh-4rem)] w-full bg-cream-200 dark:bg-night-800 shadow-xl overflow-hidden md:flex">
-            <p className="absolute top-4 right-4 rounded-full px-2 bg-green-200 text-green-900">{status}</p>
+            <p className="absolute top-4 right-4 rounded-full px-2 bg-green-200 text-green-900">
+                {status}
+            </p>
             <div className="relative md:w-2/5">
                 <div className="absolute top-0 left-0 w-full h-full"></div>
                 {posterUrl ? (
@@ -48,23 +50,25 @@ export default async function MovieSelected({ movieSelected }) {
                     <p className="bg-yellow-500 max-w-fit text-black font-bold px-2 py-1 rounded-md text-[1rem]">
                         ★ {movieSelected.vote_average?.toFixed(1)}
                     </p>
-                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50">
-                        &bull; ({movieSelected.vote_count} vote)
+                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2">
+                        {movieSelected.vote_count} vote
                     </p>
-                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50">
-                        <BsCalendarDate /> {movieSelected.release_date}
+                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2">
+                        <BsCalendarDate className="text-yellow-700" />{" "}
+                        {movieSelected.release_date}
                     </p>
-                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50">
-                        <IoMdTime /> {movieSelected.runtime} min
+                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2">
+                        <IoMdTime className="text-yellow-700" />{" "}
+                        {movieSelected.runtime} min
                     </p>
-                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50">
-                        <BiWorld />{" "}
+                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2">
+                        <BiWorld className="text-yellow-700" />{" "}
                         {movieSelected.production_countries
                             ?.map((country) => country.name)
                             .join(", ")}
                     </p>
-                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50">
-                        <MdOutlineSpatialAudioOff />{" "}
+                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2">
+                        <MdOutlineSpatialAudioOff className="text-yellow-700" />{" "}
                         {movieSelected.spoken_languages
                             ?.map((language) => language.english_name)
                             .join(", ")}
@@ -98,7 +102,7 @@ export default async function MovieSelected({ movieSelected }) {
                 )}
 
                 {cast.length > 0 && (
-                    <div>
+                    <div className="overflow-auto">
                         <p className="text-sm text-night-700/70 dark:text-cream-50/50 mb-1">
                             actors:
                         </p>
