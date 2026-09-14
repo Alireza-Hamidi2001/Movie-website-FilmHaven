@@ -1,6 +1,8 @@
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import { Michroma, Sansation } from "next/font/google";
+import Header from "./_components/Header";
+import Footer from "./_components/Footer";
 
 export const metadata = {
     title: {
@@ -23,7 +25,9 @@ export default function RootLayout({ children }) {
             <body
                 className={`${sansation.className} relative antialiased bg-primary-950 text-primary-50 min-h-screen flex flex-col bg-cream-50 dark:bg-night-950`}>
                 <div className="flex-1 grid">
+                    <Header />
                     <main className="mx-auto max-w-8xl w-full">{children}</main>
+                    <Footer />
                 </div>
                 <Toaster
                     position="top-center"

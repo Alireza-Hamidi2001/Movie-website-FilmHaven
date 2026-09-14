@@ -6,8 +6,8 @@ import { HiOutlineMail } from "react-icons/hi";
 
 function Footer() {
     return (
-        <footer className="flex flex-col gap-4 mt-10 text-night-700 dark:text-cream-50 p-8">
-            <section className="bg-cream-200 dark:bg-night-900 grid grid-cols-[auto_1fr] items-center gap-8 p-4 rounded-lg max-w-3xl mx-auto">
+        <footer className="bg-cream-200 dark:bg-night-900 flex flex-col gap-4 text-night-700 dark:text-cream-50 p-8">
+            <section className=" grid grid-cols-[auto_1fr] bg-cream-300 dark:bg-night-950 items-center gap-8 p-4 rounded-lg max-w-3xl mx-auto">
                 <div className="relative w-full h-12">
                     <Image
                         src={logo}

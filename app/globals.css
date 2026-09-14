@@ -7,13 +7,14 @@
     --color-cream-50: #fdfbf7; /* پس‌زمینه اصلی - کرم بسیار روشن */
     --color-cream-100: #faf6ee; /* پس‌زمینه کارت‌ها */
     --color-cream-200: #f5ede0; /* پس‌زمینه hover */
-    --color-cream-300: #ebe0cc; /* مرزها و خطوط */
+    --color-cream-300: #DED4C1; /* مرزها و خطوط */
 
     --color-ink-900: #1a1612; /* متن اصلی - قهوه‌ای تیره */
     --color-ink-700: #3d352c; /* متن تیتر */
     --color-ink-500: #6b5f52; /* متن معمولی */
     --color-ink-400: #8a7d6e; /* متن توضیحات */
     --color-ink-300: #a89b8a; /* متن کم‌رنگ */
+    --color-ink-200: #ddd; /* متن کم‌رنگ */
 
     /* ---------- Dark Mode ---------- */
     --color-night-950: #0d0d12; /* پس‌زمینه اصلی */
@@ -38,18 +39,16 @@ html {
 }
 
 body {
-    /* background-color: var(--color-cream-50);
-    color: var(--color-ink-900); */
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .spinner {
     margin: 4.75rem auto 1.6rem auto;
-    width: 40px;
+    width: 70px;
     aspect-ratio: 1;
     border-radius: 50%;
-    border: 8px solid var(--color-primary-900);
-    border-right-color: var(--color-primary-200);
+    border: 8px solid var(--color-night-700);
+    border-right-color: var(--color-cream-300);
     animation: rotate 1s infinite linear;
 }
 
@@ -58,11 +57,10 @@ body {
     width: 20px;
     aspect-ratio: 1;
     border-radius: 50%;
-    border: 2px solid var(--color-primary-200);
+    border: 2px solid var(--color-cream-200);
     border-right-color: transparent;
     animation: rotate 1s infinite linear;
 }
-
 
 /* =====================================================
 ANIMATIONS
@@ -82,4 +80,29 @@ ANIMATIONS
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--color-cream-50);
+}
+
+/* Thumb */
+::-webkit-scrollbar-thumb {
+    background: var(--color-ink-400);
+    border-radius: 10px;
+}
+
+/* Dark Mode */
+.dark ::-webkit-scrollbar-track {
+    background: var(--color-night-950);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: var(--color-night-700);
 }

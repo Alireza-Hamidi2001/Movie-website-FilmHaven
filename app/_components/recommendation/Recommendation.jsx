@@ -1,10 +1,10 @@
 import { michroma } from "@/app/layout";
-import TopMovies from "./TopMovies";
-import WatchList from "./WatchList";
+import LatestMovie from "./latestMovieSection/LatestMovie";
+import WatchList from "./watchListSection/WatchList";
 
 function Recommendation() {
     return (
-        <section className="my-10 p-8">
+        <section className="relative my-10 p-8">
             <h1
                 className={`${michroma.className} text-night-700 dark:text-cream-50 text-center text-[1.8rem]`}
             >
@@ -16,7 +16,7 @@ function Recommendation() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <WatchList />
-                <TopMovies />
+                <LatestMovie />
             </div>
         </section>
     );

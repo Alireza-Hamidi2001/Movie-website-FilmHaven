@@ -30,7 +30,7 @@ function HeaderActions() {
             <li className="relative flex items-center">
                 <input
                     type="text"
-                    placeholder="Search..."
+                    placeholder="Search movie ..."
                     className="pl-3 pr-9 py-1.5 w-40 md:w-56 text-sm tracking-wider 
                         text-white placeholder:text-ink-400 dark:placeholder:text-gray-500
                         rounded-lg  bg-cream-200 border border-night-700/20 dark:border-cream-50/10 dark:bg-night-700

@@ -1,43 +1,24 @@
-async function getMovies() {
-    console.log("TMDB TOKEN:", process.env.TMDB_TOKEN);
+import { Suspense } from "react";
+import MoviesGrid from "./MoviesGrid";
+import Spinner from "../_components/Spinner";
+import { TbMovie } from "react-icons/tb";
 
-    try {
-        const response = await fetch(
-            "https://api.themoviedb.org/3/search/movie?query=Batman",
-            {
-                headers: {
-                    Authorization: `Bearer ${process.env.TMDB_TOKEN}`,
-                    accept: "application/json",
-                },
-            }
-        );
-
-        console.log("STATUS:", response.status);
-
-        const data = await response.json();
-
-        console.log("DATA:", data);
-
-        return data.results;
-    } catch (error) {
-        console.error("FETCH ERROR:", error);
-        console.error("ERROR MESSAGE:", error.message);
-        console.error("ERROR CAUSE:", error.cause);
-
-        throw error;
-    }
-}
-
-export default async function MoviesPage() {
-    const movies = await getMovies();
+export default async function MoviesPage({ searchParams }) {
+    const params = await searchParams;
+    const page = Number(params?.page) || 1;
 
     return (
-        <div>
-            <h1>Movies</h1>
+        <div className="min-h-screen pt-18 p-6">
+            <h1 className="flex items-center gap-2 text-2xl font-bold text-night-700 dark:text-cream-50 mb-6">
+                <TbMovie className="w-8 h-8" /> Movies
+            </h1>
 
-            {movies.map((movie) => (
-                <p key={movie.id}>{movie.title}</p>
-            ))}
+            <Suspense
+                fallback={<Spinner />}
+                key={page}
+            >
+                <MoviesGrid page={page} />
+            </Suspense>
         </div>
     );
 }
