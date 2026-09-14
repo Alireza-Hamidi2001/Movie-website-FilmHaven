@@ -7,7 +7,7 @@ function ActorCart({ actorSelected }) {
             {posterUrl ? (
                 <img
                     src={posterUrl}
-                    alt={movieSelected.title}
+                    alt={actorSelected.name}
                     className="object-cover w-full h-full"
                 />
             ) : (
