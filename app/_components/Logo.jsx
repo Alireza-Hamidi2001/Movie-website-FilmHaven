@@ -6,12 +6,13 @@ function Logo() {
     return (
         <Link
             href="/"
-            className="relative w-full h-12"
+            className="relative w-28 h-10 md:w-36 mx-auto md:h-12"
         >
             <Image
+            fill
                 src={logo}
                 alt="logo image of header"
-                className="w-[10rem] mx-auto"
+                className="mx-auto"
             />
         </Link>
     );

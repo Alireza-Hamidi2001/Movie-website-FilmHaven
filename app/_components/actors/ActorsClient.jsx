@@ -4,6 +4,7 @@ import { useState } from "react";
 import avatar from "@/public/actor.png";
 import { FaAngleLeft, FaAngleRight, FaLongArrowAltRight } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
 
 const PAGE_SIZE = 6;
 
@@ -23,17 +24,16 @@ function ActorsClient({ actors }) {
                         key={person.id}
                         className="flex flex-col gap-2 md:mx-auto"
                     >
-                        <div className="relative w-28 h-46 md:w-48 md:h-56">
-                            <img
+                        <div className="relative w-28 h-46 md:w-48 md:h-56 rounded-sm overflow-hidden bg-cream-300 dark:bg-night-800 flex items-center justify-center">
+                            <Image
+                                fill
+                                unoptimized
+                                src={`https://image.tmdb.org/t/p/w200${person.profile_path}`}
                                 alt={person.name}
-                                src={
-                                    person.profile_path
-                                        ? `https://image.tmdb.org/t/p/w300${person.profile_path}`
-                                        : avatar.src
-                                }
-                                className="object-top object-cover w-full h-full"
+                                className="object-cover text-night-700/70 dark:text-cream-50/50"
                             />
                         </div>
+
                         <p className="text-night-700 dark:text-cream-50 leading-4.5 md:leading-relaxed">
                             {person.name}
                         </p>

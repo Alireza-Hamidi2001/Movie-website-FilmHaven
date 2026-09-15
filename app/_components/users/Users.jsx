@@ -19,7 +19,7 @@ function Users() {
             </div>
             <div className="absolute max-w-xl p-2 md:p-0 z-50 left-0 top-[20%] md:left-[50%] md:top-[50%] -translate-y-[50%]">
                 <h1
-                    className={`${michroma.className} text-night-700 dark:text-cream-50 text-center text-[1.4rem] leading-7 md:text-[1.8rem] md:leading-relaxed`}
+                    className={`${michroma.className} text-night-700 dark:text-cream-50 text-center text-[1.4rem] leading-7 md:text-[1.8rem]`}
                 >
                     Top Recommendations for every category
                 </h1>

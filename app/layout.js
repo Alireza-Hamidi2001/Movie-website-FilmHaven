@@ -4,13 +4,13 @@ import { Michroma, Sansation } from "next/font/google";
 import Header from "./_components/Header";
 import Footer from "./_components/Footer";
 
-// export const metadata = {
-//     title: {
-//         default: "Film Haven",
-//         template: "%s | Film Haven",
-//     },
-//     description: "Taste of Persia, From Persia with Love",
-// };
+export const metadata = {
+    title: {
+        default: "Film Haven",
+        template: "%s | Film Haven",
+    },
+    description: "Taste of Persia, From Persia with Love",
+};
 
 export const michroma = Michroma({ subsets: ["latin"], weight: "400" });
 export const sansation = Sansation({ subsets: ["latin"], weight: "400" });
@@ -21,9 +21,9 @@ export default function RootLayout({ children }) {
     return (
         <html
             lang="en"
-            className={`dark suppressHydrationWarning h-full antialiased`}>
+            className={`dark suppressHydrationWarning h-full w-screen overflow-x-hidden antialiased`}>
             <body
-                className={`${sansation.className} relative antialiased bg-primary-950 text-primary-50 min-h-screen flex flex-col bg-cream-50 dark:bg-night-950`}>
+                className={`${sansation.className} relative antialiased bg-primary-950 text-primary-50 min-h-screen flex flex-col bg-cream-50 dark:bg-night-950 w-screen overflow-x-hidden`}>
                 <div className="flex-1 grid">
                     <Header />
                     <main className="mx-auto max-w-8xl w-full">{children}</main>

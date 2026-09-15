@@ -25,17 +25,17 @@ function HeaderActions() {
     }
 
     return (
-        <ul className="flex gap-1 items-center justify-end">
+        <ul className="hidden md:flex gap-1 items-center justify-end">
             {/* سرچ */}
             <li className="relative flex items-center">
                 <input
                     type="text"
                     placeholder="Search movie ..."
                     className="pl-3 pr-9 py-1.5 w-40 md:w-56 text-sm tracking-wider 
-                        text-white placeholder:text-ink-400 dark:placeholder:text-gray-500
+                        text-white dark:placeholder:text-gray-500
                         rounded-lg  bg-cream-200 border border-night-700/20 dark:border-cream-50/10 dark:bg-night-700
                         focus:outline-none focus:ring-2 focus:ring-gold-500/50
-                        transition-colors duration-300"
+                        transition-colors duration-300 placeholder:text-night-700/60 placeholder:dark:text-cream-50/40"
                 />
                 <IoSearch className="absolute right-2 w-5 h-5 text-ink-400 dark:text-gray-500 pointer-events-none" />
             </li>

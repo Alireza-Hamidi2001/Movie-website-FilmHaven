@@ -1,4 +1,5 @@
 import { getMovieDetails } from "@/lib/tmdb";
+import Image from "next/image";
 import { BiWorld } from "react-icons/bi";
 import { BsCalendarDate } from "react-icons/bs";
 import { IoMdTime } from "react-icons/io";
@@ -15,7 +16,7 @@ export default async function MovieSelected({ movieSelected }) {
         : null;
 
     return (
-        <div className="relative mt-[4rem] h-[calc(100vh-4rem)] w-full bg-cream-200 dark:bg-night-800 shadow-xl overflow-hidden md:flex">
+        <div className="relative mt-[4rem] min-h-[calc(100vh-4rem)] w-full bg-cream-200 dark:bg-night-800 shadow-xl overflow-hidden md:flex">
             <p className="absolute top-4 right-4 rounded-full px-2 bg-green-200 text-green-900">
                 {status}
             </p>
