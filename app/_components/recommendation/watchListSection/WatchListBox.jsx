@@ -19,7 +19,7 @@ function WatchListBox({ items, onDiscoverMore, loadingMore }) {
                                 : "https://via.placeholder.com/60x90?text=No+Image"
                         }
                         alt={item.title || item.name}
-                        className="md:w-18 md:h-24 object-cover rounded-md"
+                        className="w-18 h-24 object-cover rounded-md"
                     />
                     <div className="flex-1">
                         <p className="text-night-700 dark:text-cream-50 font-medium text-sm leading-3.5 mb-2">

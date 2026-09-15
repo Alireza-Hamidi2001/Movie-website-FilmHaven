@@ -10,17 +10,19 @@ function LatestBox({ items }) {
                     key={item.id}
                     className="flex flex-col gap-3 items-center"
                 >
-                    <img
-                        src={
-                            item.poster_path
-                                ? `https://image.tmdb.org/t/p/w200${item.poster_path}`
-                                : "https://via.placeholder.com/60x90?text=No+Image"
-                        }
-                        alt={item.title || item.name}
-                        className="w-full  md:w-32 w-full  md:h-38 object-cover rounded-md"
-                    />
+                    <div className="w-full md:w-32 md:h-38 flex items-center justify-center">
+                        {item.poster_path ? (
+                            <img
+                                src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
+                                alt={item.title || item.name}
+                                className="w-full h-full object-cover rounded-md"
+                            />
+                        ) : (
+                            <p className="bg-night-700 dark:bg-cream-50">image</p>
+                        )}
+                    </div>
                     <div className="flex-1 text-center">
-                        <p className="text-night-700 dark:text-cream-50 font-medium text-[1.2rem] md:text-[1.4rem] leading-3.5 mb-2">
+                        <p className="text-night-700 dark:text-cream-50 font-medium text-[1.2rem] md:text-[1.4rem] leading-4 mb-2">
                             {item.title || item.name}
                         </p>
                         <p className="flex items-center  gap-1 text-night-700/70 dark:text-cream-50/50 text-xs">
