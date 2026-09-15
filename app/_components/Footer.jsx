@@ -6,16 +6,16 @@ import { HiOutlineMail } from "react-icons/hi";
 
 function Footer() {
     return (
-        <footer className="bg-cream-200 dark:bg-night-900 flex flex-col gap-4 text-night-700 dark:text-cream-50 p-8">
-            <section className=" grid grid-cols-[auto_1fr] bg-cream-300 dark:bg-night-950 items-center gap-8 p-4 rounded-lg max-w-3xl mx-auto">
+        <footer className="bg-cream-200 dark:bg-night-900 flex flex-col gap-4 text-night-700 dark:text-cream-50 p-4 md:p-8">
+            <section className=" grid grid-cols-1 md:grid-cols-[auto_1fr] bg-cream-300 dark:bg-night-950 items-center gap-8 p-4 rounded-lg max-w-3xl mx-auto">
                 <div className="relative w-full h-12">
                     <Image
                         src={logo}
                         alt="logo image of header"
-                        className="w-[10rem] mx-auto"
+                        className="w-[14rem] md:w-[10rem] mx-auto"
                     />
                 </div>
-                <p>
+                <p className="leading-4.5 md:leading-relaxed">
                     Discover movies and shows you&apos;ll love based on your
                     ratings and your friends favorites. Make every movie night
                     easier.
@@ -24,7 +24,7 @@ function Footer() {
             <section className="text-center text-[0.8rem] text-night-700/70 dark:text-cream-50/50">
                 &copy; Film Haven. Developed by{" "}
                 <span className="font-extrabold text-night-700 text-[1rem] dark:text-cream-50">
-                    Alireza Hamidi
+                    Alireza Hamidi <br />
                 </span>
                 . All rights reserved.
             </section>

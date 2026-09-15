@@ -5,12 +5,12 @@ import Link from "next/link";
 
 function WatchListBox({ items, onDiscoverMore, loadingMore }) {
     return (
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
             {items.map((item) => (
                 <Link
-                href={`/movies/${item.title}`}
+                    href={`/movies/${item.title}`}
                     key={item.id}
-                    className="flex gap-3 items-center"
+                    className="flex gap-2 md:gap-3 items-center"
                 >
                     <img
                         src={
@@ -19,7 +19,7 @@ function WatchListBox({ items, onDiscoverMore, loadingMore }) {
                                 : "https://via.placeholder.com/60x90?text=No+Image"
                         }
                         alt={item.title || item.name}
-                        className="w-18 h-24 object-cover rounded-md"
+                        className="md:w-18 md:h-24 object-cover rounded-md"
                     />
                     <div className="flex-1">
                         <p className="text-night-700 dark:text-cream-50 font-medium text-sm leading-3.5 mb-2">

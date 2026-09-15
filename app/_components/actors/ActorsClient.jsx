@@ -16,14 +16,14 @@ function ActorsClient({ actors }) {
 
     return (
         <>
-            <div className="grid grid-cols-3 md:grid-cols-6 my-6">
+            <div className="grid gap-2 grid-cols-3 md:grid-cols-6 my-6">
                 {visible.map((person) => (
                     <Link
                         href={`/actors/${person.id}`}
                         key={person.id}
-                        className="flex flex-col gap-2 justify-center mx-auto"
+                        className="flex flex-col gap-2 md:mx-auto"
                     >
-                        <div className="relative w-28 h-28 md:w-48 md:h-56">
+                        <div className="relative w-28 h-46 md:w-48 md:h-56">
                             <img
                                 alt={person.name}
                                 src={
@@ -31,17 +31,14 @@ function ActorsClient({ actors }) {
                                         ? `https://image.tmdb.org/t/p/w300${person.profile_path}`
                                         : avatar.src
                                 }
-                                className="object-top object-contain w-full h-full"
+                                className="object-top object-cover w-full h-full"
                             />
                         </div>
-                        <p className="text-night-700 dark:text-cream-50">
+                        <p className="text-night-700 dark:text-cream-50 leading-4.5 md:leading-relaxed">
                             {person.name}
                         </p>
                         <div className="flex gap-2 items-center">
-                            {/* <span className="text-xs bg-green-500/20 text-green-700 dark:text-green-400 font-medium rounded-full px-2 py-0.5">
-                                {person.popularity?.toFixed(1)}
-                            </span> */}
-                            <span className="text-night-700/70 dark:text-cream-50/50">
+                            <span className="text-night-700/70 text-sm dark:text-cream-50/50 bg-cream-300 dark:bg-night-900 px-2 rounded-full">
                                 {person.known_for_department}
                             </span>
                         </div>
@@ -69,10 +66,10 @@ function ActorsClient({ actors }) {
             </div>
             <Link
                 href="/actors"
-                className="text-[1.4rem] group flex items-center justify-center gap-2 text-night-700/70 dark:text-cream-50/50 hover:text-night-700 dark:hover:text-cream-50 transition-all duration-300 mt-8"
+                className="text-[1rem] md:text-[1.4rem] group flex items-center justify-center gap-2 text-night-700/70 dark:text-cream-50/50 hover:text-night-700 dark:hover:text-cream-50 transition-all duration-300 mt-8"
             >
                 Discover more actors{" "}
-                <FaLongArrowAltRight className="w-6 h-6 group-hover:translate-x-1 transition-all duration-300" />
+                <FaLongArrowAltRight className="w-4 md:w-8 h-4 md:h-8 group-hover:translate-x-1 transition-all duration-300" />
             </Link>
         </>
     );

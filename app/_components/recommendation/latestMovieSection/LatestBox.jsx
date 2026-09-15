@@ -3,7 +3,7 @@ import { FaStar } from "react-icons/fa";
 
 function LatestBox({ items }) {
     return (
-        <div className="overflow-auto grid grid-cols-5 gap-4">
+        <div className="overflow-auto grid grid-cols-2 md:grid-cols-5 gap-4">
             {items.map((item) => (
                 <Link
                     href={`/movies/${item.title}`}
@@ -17,10 +17,10 @@ function LatestBox({ items }) {
                                 : "https://via.placeholder.com/60x90?text=No+Image"
                         }
                         alt={item.title || item.name}
-                        className="w-32 h-38 object-cover rounded-md"
+                        className="w-full  md:w-32 w-full  md:h-38 object-cover rounded-md"
                     />
                     <div className="flex-1 text-center">
-                        <p className="text-night-700 dark:text-cream-50 font-medium text-sm leading-3.5 mb-2">
+                        <p className="text-night-700 dark:text-cream-50 font-medium text-[1.2rem] md:text-[1.4rem] leading-3.5 mb-2">
                             {item.title || item.name}
                         </p>
                         <p className="flex items-center  gap-1 text-night-700/70 dark:text-cream-50/50 text-xs">
