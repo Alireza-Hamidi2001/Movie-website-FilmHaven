@@ -10,7 +10,7 @@ import Link from "next/link";
 
 function Hero() {
     return (
-        <div className="relative">
+        <div className="relative z-30">
             <div className="absolute top-0 left-0 z-30 w-full h-screen bg-linear-to-r from-blue-800/10 to-blue-500/10  bg-black/60 [clip-path:polygon(0%_0%,100%_0%,100%_73%,0%_100%)]"></div>
             <div className="relative w-screen h-screen [clip-path:polygon(0%_0%,100%_0%,100%_73%,0%_100%)]">
                 <Image
