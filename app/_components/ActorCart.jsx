@@ -39,14 +39,14 @@ function ActorCart({ actorSelected }) {
     const bioIsLong = bio.length > 320;
 
     return (
-        <div className="mt-16 min-h-[calc(100vh-4rem)] text-night-700 dark:text-cream-50 md:grid md:grid-cols-[1fr_2fr]">
+        <div className="mt-16 min-h-[calc(100vh-4rem)] text-night-700 dark:text-cream-50 lg:grid lg:grid-cols-[1fr_2fr]">
             {/* پوستر: sticky روی دسکتاپ، بالای صفحه روی موبایل */}
-            <div className="relative h-[90vh] md:h-[60vh] lg:h-[calc(100vh-4rem)] lg:sticky lg:top-16">
+            <div className="relative h-[55vh] lg:h-[calc(100vh-4rem)] lg:sticky lg:top-16">
                 {posterUrl ? (
                     <img
                         src={posterUrl}
                         alt={actorSelected.name}
-                        className="w-full h-full object-cover object-top"
+                        className="w-full h-full object-cover"
                     />
                 ) : (
                     <div className="w-full h-full bg-night-800 flex items-center justify-center text-cream-50/40">
@@ -54,9 +54,9 @@ function ActorCart({ actorSelected }) {
                     </div>
                 )}
 
-                <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-t from-night-950 via-night-950/10 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-night-950/0" />
+                <div className="absolute inset-0 bg-linear-to-t from-night-950 via-night-950/10 to-transparent lg:bg-linear-to-r lg:from-transparent lg:via-transparent lg:to-night-950/0" />
 
-                <div className="absolute top-0 left-0 md:bottom-0 p-6 lg:hidden">
+                <div className="absolute bottom-0 left-0 p-6 lg:hidden">
                     <h1
                         className={`${michroma.className} text-2xl text-cream-50 drop-shadow-lg`}
                     >
@@ -72,7 +72,7 @@ function ActorCart({ actorSelected }) {
             </div>
 
             {/* محتوا */}
-            <div className="px-2 py-8 md:px-6 lg:px-12 lg:py-12 max-w-4xl">
+            <div className="px-6 py-8 md:px-10 lg:px-12 lg:py-12 max-w-4xl">
                 <div className="hidden lg:block mb-6">
                     <h1 className={`${michroma.className} text-3xl`}>
                         {actorSelected.name}
@@ -82,9 +82,9 @@ function ActorCart({ actorSelected }) {
                     </p>
                 </div>
 
-                <div className="flex flex-wrap justify-center md:self-start gap-1 md:gap-3 mb-8">
+                <div className="flex flex-wrap gap-3 mb-8">
                     {actorSelected.birthday && (
-                        <div className="flex items-center gap-2 text-sm bg-cream-200 dark:bg-night-900 rounded-full px-2 py-1 md:px-4 md:py-2">
+                        <div className="flex items-center gap-2 text-sm bg-cream-200 dark:bg-night-900 rounded-full px-4 py-2">
                             <FaBirthdayCake style={{ color: GOLD }} />
                             <span>
                                 {formatDate(actorSelected.birthday)}
@@ -99,7 +99,7 @@ function ActorCart({ actorSelected }) {
                     )}
 
                     {actorSelected.place_of_birth && (
-                        <div className="flex items-center gap-2 text-sm bg-cream-200 dark:bg-night-900 rounded-full px-2 py-1 md:px-4 md:py-2">
+                        <div className="flex items-center gap-2 text-sm bg-cream-200 dark:bg-night-900 rounded-full px-4 py-2">
                             <FaMapMarkerAlt style={{ color: GOLD }} />
                             <span>{actorSelected.place_of_birth}</span>
                         </div>
@@ -113,7 +113,7 @@ function ActorCart({ actorSelected }) {
                         >
                             Biography
                         </h2>
-                        <p className="text-[0.9rem] md:text-[1rem] leading-5 text-night-700 dark:text-cream-50 whitespace-pre-line transition-all">
+                        <p className="text-[0.95rem] leading-5 text-night-700 dark:text-cream-50 whitespace-pre-line transition-all">
                             {bio}
                         </p>
                     </div>
