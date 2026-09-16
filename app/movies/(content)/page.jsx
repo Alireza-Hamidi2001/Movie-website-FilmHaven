@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import MoviesGrid from "./MoviesGrid";
-import Spinner from "../_components/Spinner";
+import MoviesGrid from "../MoviesGrid";
+import Spinner from "../../_components/Spinner";
 import { TbMovie } from "react-icons/tb";
 
 export default async function MoviesPage({ searchParams }) {
