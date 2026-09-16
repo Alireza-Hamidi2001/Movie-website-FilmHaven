@@ -25,7 +25,7 @@ function HeaderActions() {
     }
 
     return (
-        <ul className="hidden md:flex gap-1 items-center justify-end">
+        <ul className="hidden lg:flex gap-1 items-center justify-end">
             {/* سرچ */}
             <li className="relative flex items-center">
                 <input

@@ -34,7 +34,7 @@ function MobileMenu() {
             {/* Hamburger Button */}
             <button
                 onClick={() => setIsOpen(true)}
-                className="flex flex-row-reverse md:hidden cursor-pointer text-right"
+                className="flex flex-row-reverse lg:hidden cursor-pointer text-right"
                 aria-label="Open menu"
             >
                 <FiMenu className="w-10 h-10 text-right" />
@@ -43,7 +43,7 @@ function MobileMenu() {
             {/* Backdrop (Blur Background) */}
             <div
                 onClick={() => setIsOpen(false)}
-                className={`fixed inset-0 w-screen h-screen z-30 dark:bg-cream-300/80 bg-night-950/80 backdrop-blur-lg md:hidden transition-opacity duration-300 ${
+                className={`fixed inset-0 w-screen h-screen z-30 dark:bg-cream-300/80 bg-night-950/80 backdrop-blur-lg lg:hidden transition-opacity duration-300 ${
                     isOpen
                         ? "opacity-100 pointer-events-auto"
                         : "opacity-0 pointer-events-none"
@@ -53,7 +53,7 @@ function MobileMenu() {
 
             {/* Full Screen Overlay - Slides from right */}
             <div
-                className={`fixed top-0 right-0 z-50 bg-cream-300 dark:bg-night-900 border border-cream-50 dark:border-night-700 h-screen w-[60vw] md:hidden transform transition-transform duration-300 ease-in-out ${
+                className={`fixed top-0 right-0 z-50 bg-cream-300 dark:bg-night-900 border border-cream-50 dark:border-night-700 h-screen w-[60vw] lg:hidden transform transition-transform duration-300 ease-in-out ${
                     isOpen ? "translate-x-0" : "translate-x-full"
                 }`}
             >

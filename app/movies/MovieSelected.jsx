@@ -4,6 +4,7 @@ import { BiWorld } from "react-icons/bi";
 import { BsCalendarDate } from "react-icons/bs";
 import { IoMdTime } from "react-icons/io";
 import { MdOutlineSpatialAudioOff } from "react-icons/md";
+import { michroma } from "../layout";
 
 export default async function MovieSelected({ movieSelected }) {
     const director = movieSelected.credits?.crew?.find(
@@ -93,9 +94,11 @@ export default async function MovieSelected({ movieSelected }) {
 
                 {director && (
                     <p className="text-sm">
-                        <span className="text-night-700/70 dark:text-cream-50/50">
-                            Director:{" "}
-                        </span>
+                        <h2
+                            className={`${michroma.className} text-sm uppercase text-night-700/70 dark:text-cream-50/50 tracking-wide mb-3`}
+                        >
+                            Director
+                        </h2>
                         <span className="text-[1.2rem] text-night-700 dark:text-cream-50 font-medium">
                             {director.name}
                         </span>
@@ -104,9 +107,11 @@ export default async function MovieSelected({ movieSelected }) {
 
                 {cast.length > 0 && (
                     <div className="overflow-auto">
-                        <p className="text-sm text-night-700/70 dark:text-cream-50/50 mb-1">
-                            actors:
-                        </p>
+                        <h2
+                            className={`${michroma.className} text-sm uppercase text-night-700/70 dark:text-cream-50/50 tracking-wide mb-3`}
+                        >
+                            Actors
+                        </h2>
                         <div className="flex flex-wrap gap-2">
                             {cast.map((actor) => (
                                 <span

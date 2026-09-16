@@ -2,7 +2,7 @@ import Link from "next/link";
 
 function Navigation() {
     return (
-        <ul className="hidden md:flex gap-6 text-gray-300/70 ">
+        <ul className="hidden lg:flex gap-6 text-gray-300/70 ">
             <Link
                 href="/movies"
                 className="transition-all duration-300 text-ink-400 dark:text-cream-50"

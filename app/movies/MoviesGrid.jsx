@@ -35,14 +35,14 @@ export default async function MoviesGrid({ page }) {
 
     return (
         <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-4 mb-8">
                 {movies.map((movie) => (
                     <Link
                         href={`/movies/${movie.title}`}
                         key={movie.id}
                         className="flex flex-col text-night-700 dark:text-cream-50 bg-cream-300 dark:bg-night-900 rounded-xl"
                     >
-                        <div className="w-full h-96 overflow-hidden">
+                        <div className="relative overflow-hidden w-full md:h-96">
                             <img
                                 src={
                                     movie.poster_path
@@ -50,15 +50,25 @@ export default async function MoviesGrid({ page }) {
                                         : "https://via.placeholder.com/400x600?text=No+Image"
                                 }
                                 alt={movie.title}
-                                className="object-cover hover:scale-110 transition-all duration-300 cursor-pointer"
+                                className="h-56 md:h-full relative z-30 mx-auto object-cover hover:scale-110 transition-all duration-300 cursor-pointer"
                             />
+                            <img
+                                src={
+                                    movie.poster_path
+                                        ? `https://image.tmdb.org/t/p/w400${movie.poster_path}`
+                                        : "https://via.placeholder.com/400x600?text=No+Image"
+                                }
+                                alt={movie.title}
+                                className="md:hidden absolute top-0 z-20 mx-auto object-cover hover:scale-110 transition-all duration-300 cursor-pointer"
+                            />
+                            <div className="md:hidden absolute top-0 z-20 backdrop-blur-xs w-full h-full bg-black/50"></div>
                         </div>
                         <div className="p-3 flex flex-col gap-2">
-                            <h2 className="text-[1rem] font-semibold leading-tight">
+                            <h2 className="text-[1.6rem] md:text-[1rem] font-semibold leading-tight">
                                 {movie.title}
                             </h2>
                             <div className="relative flex flex-col gap-1 mt-1">
-                                <div className="text-[0.8rem] text-night-700/70 dark:text-cream-50/50 flex items-center justify-between gap-2">
+                                <div className="text-[1rem] md:text-[0.8rem] text-night-700/70 dark:text-cream-50/50 flex items-center justify-between gap-2">
                                     <p className="flex items-center gap-1">
                                         <BsCalendarDate /> Release date
                                     </p>
@@ -66,7 +76,7 @@ export default async function MoviesGrid({ page }) {
                                         {movie.release_date?.slice(0, 4) || "—"}
                                     </p>
                                 </div>
-                                <div className="text-[0.8rem] text-night-700/70 dark:text-cream-50/50 flex items-center justify-between gap-2">
+                                <div className="text-[1rem] md:text-[0.8rem] text-night-700/70 dark:text-cream-50/50 flex items-center justify-between gap-2">
                                     <p className="flex items-center gap-1">
                                         <MdOutlineLanguage /> Language
                                     </p>
@@ -74,7 +84,7 @@ export default async function MoviesGrid({ page }) {
                                         {movie.original_language}
                                     </p>
                                 </div>
-                                <div className="text-[0.8rem] text-night-700/70 dark:text-cream-50/50 flex items-center justify-between gap-2">
+                                <div className="text-[1rem] md:text-[0.8rem] text-night-700/70 dark:text-cream-50/50 flex items-center justify-between gap-2">
                                     <p className="flex items-center gap-1">
                                         <FaStar className="text-amber-500" />{" "}
                                         Rating
