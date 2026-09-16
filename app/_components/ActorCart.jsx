@@ -41,7 +41,7 @@ function ActorCart({ actorSelected }) {
     return (
         <div className="mt-16 min-h-[calc(100vh-4rem)] text-night-700 dark:text-cream-50 md:grid md:grid-cols-[1fr_2fr]">
             {/* پوستر: sticky روی دسکتاپ، بالای صفحه روی موبایل */}
-            <div className="relative h-[80vh] md:h-[60vh] lg:h-[calc(100vh-4rem)] lg:sticky lg:top-16">
+            <div className="relative h-[90vh] md:h-[60vh] lg:h-[calc(100vh-4rem)] lg:sticky lg:top-16">
                 {posterUrl ? (
                     <img
                         src={posterUrl}
@@ -54,9 +54,9 @@ function ActorCart({ actorSelected }) {
                     </div>
                 )}
 
-                <div className="absolute inset-0 bg-gradient-to-t from-night-950 via-night-950/10 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-night-950/0" />
+                <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-t from-night-950 via-night-950/10 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-night-950/0" />
 
-                <div className="absolute bottom-0 left-0 p-6 lg:hidden">
+                <div className="absolute top-0 left-0 md:bottom-0 p-6 lg:hidden">
                     <h1
                         className={`${michroma.className} text-2xl text-cream-50 drop-shadow-lg`}
                     >
