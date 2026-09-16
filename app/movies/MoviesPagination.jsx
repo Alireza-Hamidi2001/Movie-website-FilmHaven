@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 export default function MoviesPagination({ currentPage, totalPages }) {
     const router = useRouter();
@@ -41,9 +42,9 @@ export default function MoviesPagination({ currentPage, totalPages }) {
             <button
                 onClick={() => goToPage(currentPage - 1)}
                 disabled={currentPage === 1}
-                className="px-2 py-1 md:px-4 md:py-2 text-[0.7rem] rounded-full bg-black/15 dark:bg-white/20 text-night-700 dark:text-cream-50 disabled:opacity-40 hover:bg-blue-700 hover:text-cream-50 transition disabled:cursor-not-allowed"
+                className="px-2 py-1 md:px-4 md:py-2 text-[1rem] rounded-full text-night-700 dark:text-cream-50 disabled:opacity-40 hover:bg-blue-700 hover:text-cream-50 transition disabled:cursor-not-allowed"
             >
-                ← Prev
+                <FaAngleLeft />
             </button>
 
             {/* شماره صفحات */}
@@ -53,7 +54,7 @@ export default function MoviesPagination({ currentPage, totalPages }) {
                         key={`dots-${i}`}
                         className="text-night-700/50 dark:text-cream-50/50"
                     >
-                        ...
+                        . . .
                     </span>
                 ) : (
                     <button
@@ -74,9 +75,9 @@ export default function MoviesPagination({ currentPage, totalPages }) {
             <button
                 onClick={() => goToPage(currentPage + 1)}
                 disabled={currentPage === totalPages}
-                className="px-2 py-1 md:px-4 md:py-2 rounded-full text-[0.7rem] bg-black/15 dark:bg-white/20 text-night-700 dark:text-cream-50 disabled:opacity-40 hover:bg-blue-700 hover:text-cream-50 transition disabled:cursor-not-allowed"
+                className="px-2 py-1 md:px-4 md:py-2 rounded-full text-[1rem] text-night-700 dark:text-cream-50 disabled:opacity-40 hover:bg-blue-700 hover:text-cream-50 transition disabled:cursor-not-allowed"
             >
-                Next →
+                <FaAngleRight />
             </button>
         </div>
     );

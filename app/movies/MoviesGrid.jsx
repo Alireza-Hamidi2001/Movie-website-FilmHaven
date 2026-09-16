@@ -35,12 +35,11 @@ export default async function MoviesGrid({ page }) {
 
     return (
         <>
-            <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-4 mb-8">
+            <div className="grid grid-cols-1 my-8  sm:grid-cols-2  lg:grid-cols-4 gap-4 mb-8">
                 {movies.map((movie) => (
                     <Link
-                        href={`/movies/${movie.title}`}
+                        href={`/movies/${movie.id}`}
                         key={movie.id}
-                        className="flex flex-col text-night-700 dark:text-cream-50 bg-cream-300 dark:bg-night-900 rounded-xl"
                     >
                         <div className="relative overflow-hidden w-full md:h-96">
                             <img

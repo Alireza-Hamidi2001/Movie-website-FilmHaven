@@ -1,17 +1,25 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
 import { IoSearch, IoClose } from "react-icons/io5";
+import Link from "next/link";
 
 function SearchModal({ isOpen, onClose }) {
     const [query, setQuery] = useState("");
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [mounted, setMounted] = useState(false);
     const router = useRouter();
 
     const debounceRef = useRef(null);
     const abortRef = useRef(null);
+
+    // برای اطمینان از اینکه فقط سمت کلاینت رندر میشه (لازمه برای createPortal)
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     // بستن با کلید Escape
     useEffect(() => {
@@ -22,11 +30,24 @@ function SearchModal({ isOpen, onClose }) {
         return () => document.removeEventListener("keydown", handleKey);
     }, [isOpen, onClose]);
 
+    // قفل کردن اسکرول صفحه وقتی مودال بازه
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [isOpen]);
+
     // ریست شدن موقع بسته شدن مودال
     useEffect(() => {
         if (!isOpen) {
             setQuery("");
             setResults([]);
+            setLoading(false);
         }
     }, [isOpen]);
 
@@ -40,7 +61,6 @@ function SearchModal({ isOpen, onClose }) {
 
         setLoading(true);
 
-        // اگه درخواست قبلی هنوز در حال اجراست، لغوش کن
         if (abortRef.current) abortRef.current.abort();
         if (debounceRef.current) clearTimeout(debounceRef.current);
 
@@ -62,7 +82,7 @@ function SearchModal({ isOpen, onClose }) {
             } finally {
                 setLoading(false);
             }
-        }, 350); // 350ms تأخیر قبل از فرستادن درخواست
+        }, 350);
 
         return () => {
             clearTimeout(debounceRef.current);
@@ -74,19 +94,20 @@ function SearchModal({ isOpen, onClose }) {
         router.push(`/movies/${movieId}`);
     }
 
-    if (!isOpen) return null;
+    // تا وقتی mount نشده یا مودال بسته است، چیزی رندر نکن
+    if (!mounted || !isOpen) return null;
 
-    return (
+    const modalContent = (
         <div
-            className="fixed inset-0 z-[9999] flex justify-center top-0 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-[100] flex justify-center bg-cream-300/30 dark:bg-night-700/70 backdrop-blur-md"
             onClick={onClose}
         >
             <div
-                className="w-full max-w-xl mt-24 mx-4 bg-cream-50 dark:bg-night-900 rounded-2xl shadow-2xl border border-night-700/10 dark:border-cream-50/10 overflow-hidden h-fit"
+                className="border-2 border-cream-300 dark:border-night-700 bg-cream-50/50 dark:bg-night-700 fixed z-30 w-full max-w-xl mt-12 mx-4 p-2 rounded-lg overflow-hidden h-fit"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* اینپوت */}
-                <div className="flex items-center gap-2 p-4 border-b border-night-700/10 dark:border-cream-50/10">
+                <div className="bg-cream-200 dark:bg-night-800 rounded-sm flex items-center gap-2 p-2">
                     <IoSearch className="w-5 h-5 text-night-700/50 dark:text-cream-50/40 flex-shrink-0" />
                     <input
                         autoFocus
@@ -94,7 +115,7 @@ function SearchModal({ isOpen, onClose }) {
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
                         placeholder="Search movie ..."
-                        className="relative z-[99999] flex-1 outline-none text-red-500-700 dark:text-cream-50 placeholder:text-night-700/40 dark:placeholder:text-cream-50/30"
+                        className="relative z-[99999] flex-1 outline-none text-red-500-700 text-night-700 dark:text-cream-50 placeholder:text-night-700/40 dark:placeholder:text-cream-50/30"
                     />
                     <button
                         onClick={onClose}
@@ -106,9 +127,9 @@ function SearchModal({ isOpen, onClose }) {
                 </div>
 
                 {/* نتایج */}
-                <div className="max-h-[60vh] overflow-y-auto">
+                <div className="max-h-[60vh] grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-auto">
                     {loading && (
-                        <p className="text-center text-sm text-night-700/50 dark:text-cream-50/40 py-6">
+                        <p className="text-center text-sm text-night-700 dark:text-cream-50 py-6">
                             Searching ...
                         </p>
                     )}
@@ -121,10 +142,11 @@ function SearchModal({ isOpen, onClose }) {
 
                     {!loading &&
                         results.map((movie) => (
-                            <button
+                            <Link
+                                href={`/movies/${movie.id}`}
                                 key={movie.id}
-                                onClick={() => handleSelect(movie.id)}
-                                className="w-full flex gap-3 items-center p-3 hover:bg-night-700/5 dark:hover:bg-cream-50/5 transition-colors text-left"
+                                className="flex gap-4 bg-cream-200 dark:bg-night-800 mt-2 rounded-sm border border-cream-300 dark:border-night-700"
+                                onClick={onClose}
                             >
                                 <img
                                     src={
@@ -133,22 +155,28 @@ function SearchModal({ isOpen, onClose }) {
                                             : "https://via.placeholder.com/46x64?text=No+Image"
                                     }
                                     alt={movie.title}
-                                    className="w-15 h-20 object-cover rounded-md flex-shrink-0"
+                                    className="w-20 h-27 object-cover rounded-md flex-shrink-0"
                                 />
-                                <div>
-                                    <p className="text-sm font-medium text-night-700 dark:text-cream-50">
+                                <div className="h-full flex flex-col py-2">
+                                    <p className="text-[1.2rem] leading-5 font-medium text-night-700 dark:text-cream-50">
                                         {movie.title}
                                     </p>
-                                    <p className="text-xs text-night-700/50 dark:text-cream-50/40">
+                                    <p className="text-[0.9rem] mb-auto text-night-700/50 dark:text-cream-50/40">
                                         {movie.release_date?.slice(0, 4)}
                                     </p>
+                                    <p className="bg-yellow-500 mt-auto max-w-fit text-black p-1 rounded-md text-[0.6rem]">
+                                        ★ {movie.vote_average?.toFixed(1)}
+                                    </p>
                                 </div>
-                            </button>
+                            </Link>
                         ))}
                 </div>
             </div>
         </div>
     );
+
+    // رندر با Portal مستقیم زیر body
+    return createPortal(modalContent, document.body);
 }
 
 export default SearchModal;

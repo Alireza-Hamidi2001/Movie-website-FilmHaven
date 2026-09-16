@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import MobileHeaderActions from "./MobileHeaderActions";
+import SearchInput from "./SearchInput";
 
 function MobileMenu() {
     const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +32,7 @@ function MobileMenu() {
 
     return (
         <>
+            {/* <SearchInput /> */}
             {/* Hamburger Button */}
             <button
                 onClick={() => setIsOpen(true)}

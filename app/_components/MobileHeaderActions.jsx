@@ -26,21 +26,6 @@ function MobileHeaderActions() {
 
     return (
         <>
-            <ul className="grid grid-cols-6 mt-35 relative z-50 gap-1 items-center justify-end">
-                {/* سرچ */}
-                <li className="relative col-span-6 flex items-center">
-                    <input
-                        type="text"
-                        placeholder="Search movie ..."
-                        className="pl-3 pr-9 py-1.5 w-40 w-full mx-3 text-sm tracking-wider 
-                        text-white dark:placeholder:text-gray-500
-                        rounded-lg  bg-cream-200 border border-night-700/20 dark:border-cream-50/10 dark:bg-night-700
-                        focus:outline-none focus:ring-2 focus:ring-gold-500/50
-                        transition-colors duration-300 placeholder:text-night-700/60 placeholder:dark:text-cream-50/40"
-                    />
-                    <IoSearch className="absolute right-5 w-5 h-5 text-night-700 dark:text-cream-300 pointer-events-none" />
-                </li>
-            </ul>
             <ul className="absolute bottom-4 flex justify-center left-[50%] translate-x-[-50%]">
                 <li className="relative">
                     <button

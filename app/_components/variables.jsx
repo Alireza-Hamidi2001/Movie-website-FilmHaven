@@ -6,4 +6,7 @@ export const GENRES = [
     { id: 10749, label: "Romance" },
     { id: 878, label: "Sci-Fi" },
     { id: 53, label: "Thriller" },
+    { id: 12, label: "Adventure" },
+    { id: 16, label: "Animation" },
+    { id: 80, label: "Crime" },
 ];

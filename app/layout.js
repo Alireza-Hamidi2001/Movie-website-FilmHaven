@@ -1,8 +1,7 @@
-import { Toaster } from "react-hot-toast";
-import "./globals.css";
 import { Michroma, Sansation } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 import Header from "./_components/Header";
-import Footer from "./_components/Footer";
+import "./globals.css";
 
 export const metadata = {
     title: {
@@ -15,7 +14,6 @@ export const metadata = {
 export const michroma = Michroma({ subsets: ["latin"], weight: "400" });
 export const sansation = Sansation({ subsets: ["latin"], weight: "400" });
 
-// export const font = Robboto
 
 export default function RootLayout({ children }) {
     return (
@@ -27,7 +25,6 @@ export default function RootLayout({ children }) {
                 <div className="flex-1 grid">
                     <Header />
                     <main className="mx-auto max-w-8xl w-full">{children}</main>
-                    <Footer />
                 </div>
                 <Toaster
                     position="top-center"

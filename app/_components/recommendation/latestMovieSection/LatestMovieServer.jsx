@@ -5,7 +5,7 @@ import { GENRES } from "../../variables";
 
 async function LatestMovieServer() {
     const initialGenre = GENRES[0].id;
-    const movies = await getLatestMoviesByGenre(initialGenre, 20);
+    const movies = await getLatestMoviesByGenre(initialGenre, 20, "desc");
 
     return (
         <LatestMovieClient

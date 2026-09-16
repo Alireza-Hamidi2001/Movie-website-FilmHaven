@@ -9,7 +9,7 @@ function WatchListBox({ items, onDiscoverMore, loadingMore }) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
             {items.map((item) => (
                 <Link
-                    href={`/movies/${item.title}`}
+                    href={`/movies/${item.id}`}
                     key={item.id}
                     className="flex gap-2 md:gap-3 items-center"
                 >

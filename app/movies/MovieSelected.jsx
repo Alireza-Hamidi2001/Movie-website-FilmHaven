@@ -52,24 +52,24 @@ export default async function MovieSelected({ movieSelected }) {
                     <p className="bg-yellow-500 max-w-fit text-black font-bold px-2 py-1 rounded-md text-[1rem]">
                         ★ {movieSelected.vote_average?.toFixed(1)}
                     </p>
-                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2">
+                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2 border border-cream-300 dark:border-night-800">
                         {movieSelected.vote_count} vote
                     </p>
-                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2">
+                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2 border border-cream-300 dark:border-night-800">
                         <BsCalendarDate className="text-yellow-700" />{" "}
                         {movieSelected.release_date}
                     </p>
-                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2">
+                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2 border border-cream-300 dark:border-night-800">
                         <IoMdTime className="text-yellow-700" />{" "}
                         {movieSelected.runtime} min
                     </p>
-                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2">
+                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2 border border-cream-300 dark:border-night-800">
                         <BiWorld className="text-yellow-700" />{" "}
                         {movieSelected.production_countries
                             ?.map((country) => country.name)
                             .join(", ")}
                     </p>
-                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2">
+                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2 border border-cream-300 dark:border-night-800">
                         <MdOutlineSpatialAudioOff className="text-yellow-700" />{" "}
                         {movieSelected.spoken_languages
                             ?.map((language) => language.english_name)
@@ -77,14 +77,19 @@ export default async function MovieSelected({ movieSelected }) {
                     </p>
                 </div>
 
-                <div className="text-night-700 dark:text-cream-50 flex flex-wrap gap-2">
+                <div className="text-night-700 dark:text-cream-50 flex items-center flex-wrap gap-2">
+                    <h2
+                        className={`${michroma.className} text-sm uppercase text-night-700/70 dark:text-cream-50/50 tracking-wide`}
+                    >
+                        Genre :
+                    </h2>
                     {movieSelected.genres?.map((genre) => (
-                        <span
+                        <p
                             key={genre.id}
-                            className="text-xs bg-cream-300 dark:bg-night-900 rounded-full px-3 py-1"
+                            className="flex items-center text-xs bg-cream-50 dark:bg-night-950 border border-cream-300 dark:border-night-800 py-1 rounded-full px-3"
                         >
                             {genre.name}
-                        </span>
+                        </p>
                     ))}
                 </div>
 
@@ -95,9 +100,9 @@ export default async function MovieSelected({ movieSelected }) {
                 {director && (
                     <p className="text-sm">
                         <h2
-                            className={`${michroma.className} text-sm uppercase text-night-700/70 dark:text-cream-50/50 tracking-wide mb-3`}
+                            className={`${michroma.className} text-sm uppercase text-night-700/70 dark:text-cream-50/50 tracking-wide mt-3 mb-1`}
                         >
-                            Director
+                            Director :
                         </h2>
                         <span className="text-[1.2rem] text-night-700 dark:text-cream-50 font-medium">
                             {director.name}
@@ -108,9 +113,9 @@ export default async function MovieSelected({ movieSelected }) {
                 {cast.length > 0 && (
                     <div className="overflow-auto">
                         <h2
-                            className={`${michroma.className} text-sm uppercase text-night-700/70 dark:text-cream-50/50 tracking-wide mb-3`}
+                            className={`${michroma.className} text-sm uppercase text-night-700/70 dark:text-cream-50/50 tracking-wide mt-3 mb-1`}
                         >
-                            Actors
+                            Actors :
                         </h2>
                         <div className="flex flex-wrap gap-2">
                             {cast.map((actor) => (

@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { FaBell, FaRegMoon, FaRegSun } from "react-icons/fa";
 import { FiLogIn } from "react-icons/fi";
-import { IoSearch } from "react-icons/io5";
 import SearchModal from "./SearchModal";
+import SearchInput from "./SearchInput";
 
 function HeaderActions() {
     const [theme, setTheme] = useState("dark");
@@ -30,20 +30,10 @@ function HeaderActions() {
         <>
             <ul className="hidden lg:flex gap-1 items-center justify-end">
                 {/* سرچ: فقط یه دکمه‌ی نمایشی که مودال رو باز می‌کنه */}
-                <li className="relative flex items-center">
-                    <button
-                        onClick={() => setIsSearchOpen(true)}
-                        className="flex items-center pl-3 pr-9 py-1.5 w-40 md:w-56 text-sm tracking-wider
-                            text-night-700/60 dark:text-cream-50/40 text-left
-                            rounded-lg bg-cream-200 border border-night-700/20 dark:border-cream-50/10 dark:bg-night-700
-                            hover:ring-2 hover:ring-gold-500/30
-                            transition-colors duration-300"
-                    >
-                        Search movie ...
-                    </button>
-                    <IoSearch className="absolute right-2 w-5 h-5 text-ink-400 dark:text-gray-500 pointer-events-none" />
-                </li>
-
+                <SearchInput
+                    isSearchOpen={isSearchOpen}
+                    setIsSearchOpen={setIsSearchOpen}
+                />
                 <li className="relative">
                     <button
                         className="p-2 rounded-lg hover:bg-cream-300 dark:hover:bg-night-700
