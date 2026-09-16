@@ -36,12 +36,11 @@ function ActorCart({ actorSelected }) {
     const cast = actorSelected.movie_credits?.cast?.slice(0, 12) || [];
     const age = getAge(actorSelected.birthday);
     const bio = actorSelected.biography || "";
-    const bioIsLong = bio.length > 320;
 
     return (
         <div className="mt-16 min-h-[calc(100vh-4rem)] text-night-700 dark:text-cream-50 lg:grid lg:grid-cols-[1fr_2fr]">
-            {/* پوستر: sticky روی دسکتاپ، بالای صفحه روی موبایل */}
-            <div className="relative h-[55vh] lg:h-[calc(100vh-4rem)] lg:sticky lg:top-16">
+            {/* پوستر: سمت چپ و sticky روی دسکتاپ، بالای صفحه روی موبایل */}
+            <div className="relative h-[90vh] lg:h-[calc(100vh-4rem)] lg:sticky lg:top-16">
                 {posterUrl ? (
                     <img
                         src={posterUrl}
@@ -54,9 +53,13 @@ function ActorCart({ actorSelected }) {
                     </div>
                 )}
 
-                <div className="absolute inset-0 bg-linear-to-t from-night-950 via-night-950/10 to-transparent lg:bg-linear-to-r lg:from-transparent lg:via-transparent lg:to-night-950/0" />
+                {/* گرادیان پایین برای حالت دسکتاپ (نام پایین‌چپ) */}
+                <div className="absolute inset-0 bg-linear-to-t from-night-950 via-night-950/10 to-transparent lg:from-night-950 lg:via-night-950/10 lg:to-transparent" />
+                {/* گرادیان بالا برای حالت موبایل/تبلت کوچک (نام بالا‌چپ) */}
+                <div className="absolute inset-0 bg-linear-to-b from-night-950/70 via-transparent to-transparent lg:hidden" />
 
-                <div className="absolute bottom-0 left-0 p-6 lg:hidden">
+                {/* نام و حرفه بازیگر - همیشه روی خود عکس */}
+                <div className="absolute left-0 p-6 top-0 lg:top-auto lg:bottom-0">
                     <h1
                         className={`${michroma.className} text-2xl text-cream-50 drop-shadow-lg`}
                     >
@@ -71,18 +74,9 @@ function ActorCart({ actorSelected }) {
                 </div>
             </div>
 
-            {/* محتوا */}
-            <div className="px-6 py-8 md:px-10 lg:px-12 lg:py-12 max-w-4xl">
-                <div className="hidden lg:block mb-6">
-                    <h1 className={`${michroma.className} text-3xl`}>
-                        {actorSelected.name}
-                    </h1>
-                    <p className="text-night-700/70 dark:text-cream-50/50 text-sm mt-2 font-medium">
-                        {actorSelected.known_for_department}
-                    </p>
-                </div>
-
-                <div className="flex flex-wrap gap-3 mb-8">
+            {/* محتوا: سمت راست روی دسکتاپ، زیر عکس روی موبایل */}
+            <div className="px-2 md:px-6 py-8 lg:px-10 lg:py-12 max-w-4xl">
+                <div className="flex flex-wrap justify-center md:self-start gap-1 md:gap-3 mb-8">
                     {actorSelected.birthday && (
                         <div className="flex items-center gap-2 text-sm bg-cream-200 dark:bg-night-900 rounded-full px-4 py-2">
                             <FaBirthdayCake style={{ color: GOLD }} />
@@ -127,17 +121,14 @@ function ActorCart({ actorSelected }) {
                             <FaFilm /> Known For
                         </h2>
 
-                        <div className="flex gap-4 overflow-x-auto pb-2 -mx-6 px-6 md:-mx-10 md:px-10 lg:mx-0 lg:px-0 scrollbar-thin">
+                        <div className="grid grid-cols-3 gap-2 md:flex md:gap-4 overflow-x-auto pb-2  md:-mx-10 md:px-10 lg:mx-0 lg:px-0 scrollbar-thin">
                             {cast.map((movie) => (
                                 <Link
                                     href={`/movies/${movie.title}`}
                                     key={movie.credit_id || movie.id}
-                                    className="flex-shrink-0 w-28 group cursor-pointer"
+                                    className="flex-shrink-0 text-center md:w-28 group cursor-pointer"
                                 >
-                                    <div
-                                        className="w-28 h-40 rounded-lg overflow-hidden bg-night-800 ring-1 ring-cream-50/10 group-hover:ring-2 transition-all duration-300"
-                                        style={{ "--tw-ring-color": GOLD }}
-                                    >
+                                    <div className="w-fit h-28 md:w-28 md:h-40 rounded-sm overflow-hidden bg-night-800 mx-auto md:mx-0 ring-1 ring-cream-50/10 group-hover:ring-2 transition-all duration-300">
                                         {movie.poster_path ? (
                                             <img
                                                 src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}

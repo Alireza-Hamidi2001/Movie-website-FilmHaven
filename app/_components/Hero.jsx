@@ -11,8 +11,8 @@ import Link from "next/link";
 function Hero() {
     return (
         <div className="relative">
-            <div className="absolute top-0 left-0 z-30 w-full h-screen bg-linear-to-r from-blue-800/10 to-blue-500/10  bg-black/60 "></div>
-            <div className="relative w-screen h-screen">
+            <div className="absolute top-0 left-0 z-30 w-full h-screen bg-linear-to-r from-blue-800/10 to-blue-500/10  bg-black/60 [clip-path:polygon(0%_0%,100%_0%,100%_73%,0%_100%)]"></div>
+            <div className="relative w-screen h-screen [clip-path:polygon(0%_0%,100%_0%,100%_73%,0%_100%)]">
                 <Image
                     src={heroImageDesktop}
                     alt="hero section image"
@@ -20,69 +20,9 @@ function Hero() {
                     className="object-cover"
                 />
             </div>
-            <div className="grid grid-cols-1 absolute bottom-4 gap-1 md:gap-4 left-4 z-50">
-                <div className="flex backdrop-blur-xs bg-white/20 text-white items-center gap-2 rounded-sm p-1 md:p-2">
-                    <div className="relative w-8 h-12 md:w-12 md:h-16">
-                        <Image
-                            src={inception_poster}
-                            alt="Inception poster hero section"
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
-                    <div>
-                        <p>Inception</p>
-                        <p className="flex text-amber-500">
-                            <FaStar />
-                            <FaStar />
-                            <FaStar />
-                            <FaStar />
-                            <FaStar />
-                        </p>
-                    </div>
-                </div>
-                <div className="flex backdrop-blur-xs bg-white/20 text-white items-center gap-2 rounded-sm p-1 md:p-2">
-                    <div className="relative w-8 h-12 md:w-12 md:h-16">
-                        <Image
-                            src={spiderman}
-                            alt="Inception poster hero section"
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
-                    <div>
-                        <p>Spiderman</p>
-                        <p className="flex text-amber-500">
-                            <FaStar />
-                            <FaStar />
-                            <FaStar />
-                            <FaStar />
-                        </p>
-                    </div>
-                </div>
-                <div className="flex backdrop-blur-xs bg-white/20 text-white items-center gap-2 rounded-sm p-1 md:p-2">
-                    <div className="relative w-8 h-12 md:w-12 md:h-16">
-                        <Image
-                            src={starwars}
-                            alt="Inception poster hero section"
-                            fill
-                            className="object-cover"
-                        />
-                    </div>
-                    <div>
-                        <p>Star wars</p>
-                        <p className="flex text-amber-500">
-                            <FaStar />
-                            <FaStar />
-                            <FaStar />
-                            <FaStar />
-                        </p>
-                    </div>
-                </div>
-            </div>
             <div className="flex flex-col gap-4 absolute z-50 max-w-2xl tracking-tight -translate-y-[50%] top-[50%] right-4 p-3">
                 <p
-                    className={`${michroma.className} text-[1.8rem] leading-8 md:text-[3rem] font-extrabold text-white capitalize md:leading-12`}
+                    className={`${michroma.className} text-[2rem] leading-8 md:text-[3rem] font-extrabold text-white capitalize md:leading-12`}
                 >
                     Find the best movies to watch with friends
                 </p>
