@@ -63,7 +63,7 @@ export default async function MoviesGrid({ page }) {
                             <div className="md:hidden absolute top-0 z-20 backdrop-blur-xs w-full h-full bg-black/50"></div>
                         </div>
                         <div className="p-3 flex flex-col gap-2">
-                            <h2 className="text-[1.6rem] md:text-[1rem] font-semibold leading-tight">
+                            <h2 className="text-night-700 dark:text-cream-50 text-[1.6rem] md:text-[1.2rem] font-semibold leading-tight">
                                 {movie.title}
                             </h2>
                             <div className="relative flex flex-col gap-1 mt-1">
@@ -94,7 +94,7 @@ export default async function MoviesGrid({ page }) {
                                     {movie.genre_ids.slice(0, 4).map((id) => (
                                         <span
                                             key={id}
-                                            className="bg-cream-50 dark:bg-night-700 text-night-700 dark:text-cream-50 px-2 py-0.5 rounded-full"
+                                            className="bg-cream-300 dark:bg-night-700 text-night-700 dark:text-cream-50 px-2 py-0.5 rounded-full"
                                         >
                                             {genreMap[id]}
                                         </span>

@@ -98,7 +98,7 @@ export default async function MovieSelected({ movieSelected }) {
                 </p>
 
                 {director && (
-                    <p className="text-sm">
+                    <div className="text-sm">
                         <h2
                             className={`${michroma.className} text-sm uppercase text-night-700/70 dark:text-cream-50/50 tracking-wide mt-3 mb-1`}
                         >
@@ -107,7 +107,7 @@ export default async function MovieSelected({ movieSelected }) {
                         <span className="text-[1.2rem] text-night-700 dark:text-cream-50 font-medium">
                             {director.name}
                         </span>
-                    </p>
+                    </div>
                 )}
 
                 {cast.length > 0 && (
