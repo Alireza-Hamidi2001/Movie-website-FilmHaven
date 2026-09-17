@@ -5,10 +5,13 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import MobileHeaderActions from "./MobileHeaderActions";
-import SearchInput from "./SearchInput";
+import SearchInputMobile from "./SearchInputMobile";
+import SearchModal from "./SearchModal";
 
 function MobileMenu() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+
     const pathName = usePathname();
 
     const menu_items = [
@@ -34,12 +37,16 @@ function MobileMenu() {
         <>
             {/* <SearchInput /> */}
             {/* Hamburger Button */}
+            <SearchInputMobile
+                isSearchOpen={isSearchOpen}
+                setIsSearchOpen={setIsSearchOpen}
+            />
             <button
                 onClick={() => setIsOpen(true)}
                 className="flex flex-row-reverse lg:hidden cursor-pointer text-right"
                 aria-label="Open menu"
             >
-                <FiMenu className="w-10 h-10 text-right" />
+                <FiMenu className="text-ink-400 dark:text-cream-50 w-10 h-10 text-right" />
             </button>
 
             {/* Backdrop (Blur Background) */}
@@ -89,6 +96,10 @@ function MobileMenu() {
                 </div>
                 <MobileHeaderActions />
             </div>
+            <SearchModal
+                isOpen={isSearchOpen}
+                onClose={() => setIsSearchOpen(false)}
+            />
         </>
     );
 }

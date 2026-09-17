@@ -48,36 +48,36 @@ export default async function MovieSelected({ movieSelected }) {
                     )}
                 </div>
 
-                <div className="grid grid-cols-2 text-night-700 dark:text-cream-50 items-center gap-2">
-                    <p className="bg-yellow-500 max-w-fit text-black font-bold px-2 py-1 rounded-md text-[1rem]">
+                <div className="grid grid-cols-2 text-night-700 dark:text-cream-50 items-center gap-1 md:gap-2">
+                    <p className="bg-yellow-500 max-w-fit text-black font-bold px-2 md:px-4 py-1 rounded-md text-[1rem]">
                         ★ {movieSelected.vote_average?.toFixed(1)}
                     </p>
-                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2 border border-cream-300 dark:border-night-800">
+                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm w-full md:max-w-fit px-2 md:px-4 py-2 border border-cream-300 dark:border-night-800">
                         {movieSelected.vote_count} vote
                     </p>
-                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2 border border-cream-300 dark:border-night-800">
-                        <BsCalendarDate className="text-yellow-700" />{" "}
+                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm w-full md:max-w-fit px-2 md:px-4 py-2 border border-cream-300 dark:border-night-800">
+                        <BsCalendarDate className="text-yellow-700 w-6 h-6" />{" "}
                         {movieSelected.release_date}
                     </p>
-                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2 border border-cream-300 dark:border-night-800">
-                        <IoMdTime className="text-yellow-700" />{" "}
+                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm w-full md:max-w-fit px-2 md:px-4 py-2 border border-cream-300 dark:border-night-800">
+                        <IoMdTime className="text-yellow-700 w-6 h-6" />{" "}
                         {movieSelected.runtime} min
                     </p>
-                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2 border border-cream-300 dark:border-night-800">
-                        <BiWorld className="text-yellow-700" />{" "}
+                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm w-full md:max-w-fit px-2 md:px-4 py-2 border border-cream-300 dark:border-night-800">
+                        <BiWorld className="text-yellow-700 w-6 h-6" />{" "}
                         {movieSelected.production_countries
                             ?.map((country) => country.name)
                             .join(", ")}
                     </p>
-                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm max-w-fit px-4 py-2 border border-cream-300 dark:border-night-800">
-                        <MdOutlineSpatialAudioOff className="text-yellow-700" />{" "}
+                    <p className="flex items-center  gap-1 text-[0.9rem] text-night-700/70 dark:text-cream-50/50 bg-cream-50 dark:bg-night-900 rounded-sm w-full md:max-w-fit px-2 md:px-4 py-2 border border-cream-300 dark:border-night-800">
+                        <MdOutlineSpatialAudioOff className="text-yellow-700 w-6 h-6" />{" "}
                         {movieSelected.spoken_languages
                             ?.map((language) => language.english_name)
                             .join(", ")}
                     </p>
                 </div>
 
-                <div className="text-night-700 dark:text-cream-50 flex items-center flex-wrap gap-2">
+                <div className="text-night-700 dark:text-cream-50 flex flex-col md:flex-row md:items-center flex-wrap gap-2">
                     <h2
                         className={`${michroma.className} text-sm uppercase text-night-700/70 dark:text-cream-50/50 tracking-wide`}
                     >
@@ -86,7 +86,7 @@ export default async function MovieSelected({ movieSelected }) {
                     {movieSelected.genres?.map((genre) => (
                         <p
                             key={genre.id}
-                            className="flex items-center text-xs bg-cream-50 dark:bg-night-950 border border-cream-300 dark:border-night-800 py-1 rounded-full px-3"
+                            className="flex items-center  gap-1 text-[0.9rem] text-night-700/90 dark:text-cream-50/70 bg-cream-50 dark:bg-night-900 rounded-sm w-full md:max-w-fit px-2 md:px-4 py-1 md:py-2 border border-cream-300 dark:border-night-800 max-w-fit"
                         >
                             {genre.name}
                         </p>
@@ -117,11 +117,11 @@ export default async function MovieSelected({ movieSelected }) {
                         >
                             Actors :
                         </h2>
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-1 md:gap-2">
                             {cast.map((actor) => (
                                 <span
                                     key={actor.id}
-                                    className="text-[0.9rem] text-night-700 dark:text-cream-50 bg-cream-300 dark:bg-night-900 rounded-md px-2 py-1"
+                                    className="text-[0.8rem] text-night-700/90 dark:text-cream-50/70 bg-cream-50 dark:bg-night-900 rounded-sm px-2 md:px-4 py-2 border border-cream-300 dark:border-night-800"
                                 >
                                     {actor.name}
                                 </span>

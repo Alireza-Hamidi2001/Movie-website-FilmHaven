@@ -103,7 +103,7 @@ function SearchModal({ isOpen, onClose }) {
             onClick={onClose}
         >
             <div
-                className="border-2 border-cream-300 dark:border-night-700 bg-cream-50/50 dark:bg-night-700 fixed z-30 w-full max-w-xl mt-12 mx-4 p-2 rounded-lg overflow-hidden h-fit"
+                className="border-2 border-night-700/70 dark:border-cream-200/20 bg-cream-50/50 dark:bg-night-700 fixed z-30 w-[80vw] md:w-full md:max-w-xl mt-12 mx-4 p-2 rounded-lg overflow-hidden max-h-[80vh] md:h-fit"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* اینپوت */}
@@ -127,7 +127,7 @@ function SearchModal({ isOpen, onClose }) {
                 </div>
 
                 {/* نتایج */}
-                <div className="max-h-[60vh] grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-auto">
+                <div className="max-h-[80vh] grid grid-cols-1 md:grid-cols-2 md:grid-4 overflow-y-auto">
                     {loading && (
                         <p className="text-center text-sm text-night-700 dark:text-cream-50 py-6">
                             Searching ...
