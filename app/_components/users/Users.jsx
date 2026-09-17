@@ -19,11 +19,11 @@ function Users() {
             </div>
             <div className="absolute max-w-xl p-2 md:p-0 z-50 left-0 top-[20%] md:left-[50%] md:top-[50%] -translate-y-[50%]">
                 <h1
-                    className={`${michroma.className} text-night-700 dark:text-cream-50 text-center text-[1.4rem] leading-7 md:text-[1.8rem]`}
+                    className={`${michroma.className} text-night-700 dark:text-cream-50 text-center text-[1.4rem] leading-7 md:text-[2rem] md:leading-relaxed`}
                 >
                     Top Recommendations for every category
                 </h1>
-                <h2 className="text-night-700/50 dark:text-cream-50/50 text-[1rem] leading-4 md:text-[1.2rem] md:leading-5 mx-auto text-center max-w-xl my-8 md:my-4">
+                <h2 className="text-night-700/50 dark:text-cream-50/50 text-[1rem] leading-4 md:text-[1.4rem] md:leading-6 mx-auto text-center max-w-2xl my-10">
                     Discover movies and shows selected based on your ratings and
                     your friends preferences.
                 </h2>

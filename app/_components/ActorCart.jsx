@@ -38,14 +38,14 @@ function ActorCart({ actorSelected }) {
     const bio = actorSelected.biography || "";
 
     return (
-        <div className="mt-16 min-h-[calc(100vh-4rem)] text-night-700 dark:text-cream-50 lg:grid lg:grid-cols-[1fr_2fr]">
+        <div className="mt-16 min-h-[calc(100vh-4rem)] text-night-700 dark:text-cream-50 md:grid md:grid-cols-1  lg:grid-cols-[2fr_3fr]">
             {/* پوستر: سمت چپ و sticky روی دسکتاپ، بالای صفحه روی موبایل */}
-            <div className="relative h-[90vh] lg:h-[calc(100vh-4rem)] lg:sticky lg:top-16">
+            <div className="relative h-[90vh] md:max-w-[50vw] mx-auto md:h-[calc(100vh-4rem)] md:sticky md:top-16">
                 {posterUrl ? (
                     <img
                         src={posterUrl}
                         alt={actorSelected.name}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover "
                     />
                 ) : (
                     <div className="w-full h-full bg-night-800 flex items-center justify-center text-cream-50/40">
@@ -103,11 +103,11 @@ function ActorCart({ actorSelected }) {
                 {bio && (
                     <div className="mb-10">
                         <h2
-                            className={`${michroma.className} text-sm uppercase text-night-700/70 dark:text-cream-50/50 tracking-wide mb-3`}
+                            className={`${michroma.className} text-[1rem] uppercase text-night-700/70 dark:text-cream-50/50 tracking-wide mb-3`}
                         >
                             Biography
                         </h2>
-                        <p className="text-[0.95rem] leading-5 text-night-700 dark:text-cream-50 whitespace-pre-line transition-all">
+                        <p className="text-[1rem] md:text-[1.2rem] lg:text-[1.3rem] md:leading-8 leading-6 text-night-700 dark:text-cream-50/80 whitespace-pre-line transition-all">
                             {bio}
                         </p>
                     </div>
@@ -116,7 +116,7 @@ function ActorCart({ actorSelected }) {
                 {cast.length > 0 && (
                     <div>
                         <h2
-                            className={`${michroma.className} text-night-700/70 dark:text-cream-50/50 text-sm uppercase tracking-wide mb-4 flex items-center gap-2`}
+                            className={`${michroma.className} text-night-700/70 dark:text-cream-50/50 text-[1.4rem] uppercase tracking-wide mb-4 flex items-center gap-2`}
                         >
                             <FaFilm /> Known For
                         </h2>
@@ -133,7 +133,7 @@ function ActorCart({ actorSelected }) {
                                             <img
                                                 src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
                                                 alt={movie.title}
-                                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                                             />
                                         ) : (
                                             <div className="w-full h-full flex items-center justify-center text-cream-50/30 text-xs p-2 text-center">

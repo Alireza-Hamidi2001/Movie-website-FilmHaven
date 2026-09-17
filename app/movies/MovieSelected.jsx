@@ -17,11 +17,43 @@ export default async function MovieSelected({ movieSelected }) {
         : null;
 
     return (
-        <div className="relative mt-[4rem] min-h-[calc(100vh-4rem)] w-full bg-cream-200 dark:bg-night-800 shadow-xl overflow-hidden md:flex">
+        <div className="relative mt-[4rem] min-h-[calc(100vh-4rem)] w-full shadow-xl overflow-hidden md:flex">
             <p className="absolute top-4 right-4 rounded-full px-2 bg-green-200 text-green-900">
                 {status}
             </p>
-            <div className="relative md:w-2/5">
+            <div className="relative h-[90vh] md:max-w-[50vw] mx-auto md:h-[calc(100vh-4rem)] md:sticky md:top-16">
+                {posterUrl ? (
+                    <img
+                        src={posterUrl}
+                        alt={movieSelected.name}
+                        className="w-full h-full object-cover "
+                    />
+                ) : (
+                    <div className="w-full h-full bg-night-800 flex items-center justify-center text-cream-50/40">
+                        No image
+                    </div>
+                )}
+
+                {/* گرادیان پایین برای حالت دسکتاپ (نام پایین‌چپ) */}
+                <div className="absolute inset-0 bg-linear-to-t from-night-950 via-night-950/10 to-transparent lg:from-night-950 lg:via-night-950/10 lg:to-transparent" />
+                {/* گرادیان بالا برای حالت موبایل/تبلت کوچک (نام بالا‌چپ) */}
+                <div className="absolute inset-0 bg-linear-to-b from-night-950/70 via-transparent to-transparent lg:hidden" />
+
+                {/* نام و حرفه بازیگر - همیشه روی خود عکس */}
+                <div className="absolute left-0 p-6 top-0 lg:top-auto lg:bottom-0">
+                    <h1
+                        className={`${michroma.className} text-2xl text-cream-50 drop-shadow-lg`}
+                    >
+                        {movieSelected.name}
+                    </h1>
+                    <p
+                        className="text-sm mt-1"
+                    >
+                        {movieSelected.known_for_department}
+                    </p>
+                </div>
+            </div>
+            {/* <div className="relative md:w-2/5">
                 <div className="absolute top-0 left-0 w-full h-full"></div>
                 {posterUrl ? (
                     <img
@@ -34,7 +66,7 @@ export default async function MovieSelected({ movieSelected }) {
                         No image
                     </div>
                 )}
-            </div>
+            </div> */}
 
             <div className="md:w-2/3 px-10 p-6 text-gray-100 flex flex-col gap-4">
                 <div>
@@ -48,7 +80,7 @@ export default async function MovieSelected({ movieSelected }) {
                     )}
                 </div>
 
-                <div className="grid grid-cols-2 text-night-700 dark:text-cream-50 items-center gap-1 md:gap-2">
+                <div className="grid grid-cols-1 text-night-700 dark:text-cream-50 items-center gap-1 md:gap-2">
                     <p className="bg-yellow-500 max-w-fit text-black font-bold px-2 md:px-4 py-1 rounded-md text-[1rem]">
                         ★ {movieSelected.vote_average?.toFixed(1)}
                     </p>

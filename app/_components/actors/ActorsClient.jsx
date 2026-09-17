@@ -24,13 +24,13 @@ function ActorsClient({ actors }) {
                         key={person.id}
                         className="flex flex-col gap-2 md:mx-auto"
                     >
-                        <div className="relative w-28 h-46 md:w-48 md:h-56 rounded-sm overflow-hidden bg-cream-300 dark:bg-night-800 flex items-center justify-center">
+                        <div className="relative w-28 h-46 md:w-52 md:h-65 rounded-sm overflow-hidden bg-cream-300 dark:bg-night-800 flex items-center justify-center">
                             <Image
                                 fill
                                 unoptimized
                                 src={`https://image.tmdb.org/t/p/w200${person.profile_path}`}
                                 alt={person.name}
-                                className="object-cover text-night-700/70 dark:text-cream-50/50"
+                                className="object-cover object-top text-night-700/70 dark:text-cream-50/50"
                             />
                         </div>
 
