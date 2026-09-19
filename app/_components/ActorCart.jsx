@@ -124,7 +124,7 @@ function ActorCart({ actorSelected }) {
                         <div className="grid grid-cols-3 gap-2 md:flex md:gap-4 overflow-x-auto pb-2  md:-mx-10 md:px-10 lg:mx-0 lg:px-0 scrollbar-thin">
                             {cast.map((movie) => (
                                 <Link
-                                    href={`/movies/${movie.title}`}
+                                    href={`/movies/${movie.id}`}
                                     key={movie.credit_id || movie.id}
                                     className="flex-shrink-0 text-center md:w-28 group cursor-pointer"
                                 >

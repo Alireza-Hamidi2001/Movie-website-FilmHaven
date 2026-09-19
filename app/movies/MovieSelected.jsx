@@ -5,16 +5,23 @@ import { BsCalendarDate } from "react-icons/bs";
 import { IoMdTime } from "react-icons/io";
 import { MdOutlineSpatialAudioOff } from "react-icons/md";
 import { michroma } from "../layout";
+import Link from "next/link";
 
 export default async function MovieSelected({ movieSelected }) {
     const director = movieSelected.credits?.crew?.find(
         (person) => person.job === "Director",
     );
-    const cast = movieSelected.credits?.cast?.slice(0, 9) || [];
+    const writer = movieSelected.credits?.crew?.find(
+        (person) => person.job === "Writer",
+    );
+    const crew = movieSelected.credits?.crew?.slice(0, 10) || [];
+    const cast = movieSelected.credits?.cast?.slice(0, 10) || [];
     const status = movieSelected.status;
     const posterUrl = movieSelected.poster_path
         ? `https://image.tmdb.org/t/p/w500${movieSelected.poster_path}`
         : null;
+    console.log("////////*************//////////", movieSelected);
+    console.log("////////*************//////////", crew);
 
     return (
         <div className="relative mt-[4rem] min-h-[calc(100vh-4rem)] w-full shadow-xl overflow-hidden md:flex">
@@ -46,29 +53,13 @@ export default async function MovieSelected({ movieSelected }) {
                     >
                         {movieSelected.name}
                     </h1>
-                    <p
-                        className="text-sm mt-1"
-                    >
+                    <p className="text-sm mt-1">
                         {movieSelected.known_for_department}
                     </p>
                 </div>
             </div>
-            {/* <div className="relative md:w-2/5">
-                <div className="absolute top-0 left-0 w-full h-full"></div>
-                {posterUrl ? (
-                    <img
-                        src={posterUrl}
-                        alt={movieSelected.title}
-                        className="object-cover w-full h-full"
-                    />
-                ) : (
-                    <div className="w-full h-96 bg-gray-800 flex items-center justify-center text-gray-500">
-                        No image
-                    </div>
-                )}
-            </div> */}
 
-            <div className="md:w-2/3 px-10 p-6 text-gray-100 flex flex-col gap-4">
+            <div className="md:w-2/3 p-2 md:p-6 text-gray-100 flex flex-col gap-4">
                 <div>
                     <h1 className="text-night-700 dark:text-cream-50 text-[3rem] font-bold leading-11">
                         {movieSelected.title}
@@ -80,7 +71,7 @@ export default async function MovieSelected({ movieSelected }) {
                     )}
                 </div>
 
-                <div className="grid grid-cols-1 text-night-700 dark:text-cream-50 items-center gap-1 md:gap-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 text-night-700 dark:text-cream-50 items-center gap-1 md:gap-2">
                     <p className="bg-yellow-500 max-w-fit text-black font-bold px-2 md:px-4 py-1 rounded-md text-[1rem]">
                         ★ {movieSelected.vote_average?.toFixed(1)}
                     </p>
@@ -136,9 +127,37 @@ export default async function MovieSelected({ movieSelected }) {
                         >
                             Director :
                         </h2>
-                        <span className="text-[1.2rem] text-night-700 dark:text-cream-50 font-medium">
+                        <Link
+                            href={`/actors/${director.id}`}
+                            className="flex gap-2 items-center text-[1.2rem] text-night-700 dark:text-cream-50 font-medium"
+                        >
+                            <img
+                                src={`https://image.tmdb.org/t/p/w185${director.profile_path}`}
+                                alt="writer image"
+                                className="w-15 h-15 rounded-full object-cover object-center"
+                            />
                             {director.name}
-                        </span>
+                        </Link>
+                    </div>
+                )}
+                {writer && (
+                    <div className="text-sm">
+                        <h2
+                            className={`${michroma.className} text-sm uppercase text-night-700/70 dark:text-cream-50/50 tracking-wide mt-3 mb-1`}
+                        >
+                            Writer :
+                        </h2>
+                        <Link
+                            href={`/actors/${writer.id}`}
+                            className="flex gap-2 items-center text-[1.2rem] text-night-700 dark:text-cream-50 font-medium"
+                        >
+                            <img
+                                src={`https://image.tmdb.org/t/p/w185${writer.profile_path}`}
+                                alt="writer image"
+                                className="w-15 h-15 rounded-full object-cover object-center"
+                            />
+                            {writer.name}
+                        </Link>
                     </div>
                 )}
 
@@ -149,14 +168,21 @@ export default async function MovieSelected({ movieSelected }) {
                         >
                             Actors :
                         </h2>
-                        <div className="flex flex-wrap gap-1 md:gap-2">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-1 md:gap-2">
                             {cast.map((actor) => (
-                                <span
+                                <Link
+                                    href={`/actors/${actor.id}`}
                                     key={actor.id}
-                                    className="text-[0.8rem] text-night-700/90 dark:text-cream-50/70 bg-cream-50 dark:bg-night-900 rounded-sm px-2 md:px-4 py-2 border border-cream-300 dark:border-night-800"
+                                    className="flex flex-col items-center gap-2 text-[0.8rem] text-night-700/90 dark:text-cream-50/70 bg-cream-50 dark:bg-night-900 rounded-sm px-2 md:px-4 py-2"
+                                    //  border border-cream-300 dark:border-night-800"
                                 >
-                                    {actor.name}
-                                </span>
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
+                                        alt={actor.name}
+                                        className="w-15 h-15 rounded-full object-cover object-top"
+                                    />{" "}
+                                    - {actor.name}
+                                </Link>
                             ))}
                         </div>
                     </div>
