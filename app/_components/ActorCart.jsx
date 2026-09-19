@@ -1,6 +1,6 @@
 import { michroma } from "@/app/layout";
 import Link from "next/link";
-import { FaBirthdayCake, FaFilm, FaMapMarkerAlt } from "react-icons/fa";
+import { FaBirthdayCake, FaFilm, FaMapMarkerAlt, FaRegImage } from "react-icons/fa";
 
 const GOLD = "#E8B463";
 
@@ -128,18 +128,18 @@ function ActorCart({ actorSelected }) {
                                     key={movie.credit_id || movie.id}
                                     className="flex-shrink-0 text-center md:w-28 group cursor-pointer"
                                 >
-                                    <div className="w-fit h-28 md:w-28 md:h-40 rounded-sm overflow-hidden bg-night-800 mx-auto md:mx-0 ring-1 ring-cream-50/10 group-hover:ring-2 transition-all duration-300">
-                                        {movie.poster_path ? (
-                                            <img
-                                                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                                                alt={movie.title}
-                                                className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                                            />
-                                        ) : (
-                                            <div className="w-full h-full flex items-center justify-center text-cream-50/30 text-xs p-2 text-center">
-                                                {movie.title}
+                                    <div className="relative w-fit h-28 md:w-28 md:h-40 rounded-sm overflow-hidden bg-night-800 mx-auto md:mx-0 ring-1 ring-cream-50/10 group-hover:ring-2 transition-all duration-300">
+                                        {/* <div className="relative z-0 w-15 h-15 overflow-hidden rounded-full"> */}
+                                        {!movie.poster_path && (
+                                            <div className="absolute flex items-center justify-center text-sm top-0 bg-cream-300 dark:bg-night-700 z-10 w-full h-full">
+                                                <FaRegImage className="w-7 h-7" />
                                             </div>
                                         )}
+                                        <img
+                                            src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
+                                            alt="writer image"
+                                            className="rounded-full w-full h-full bg-cream-300 dark:bg-night-700 object-cover object-center"
+                                        />
                                     </div>
                                     <p className="text-xs mt-2 leading-tight line-clamp-2 text-night-700/80 dark:text-cream-50/70">
                                         {movie.title}
