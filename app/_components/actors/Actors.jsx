@@ -12,7 +12,7 @@ async function Actors() {
             >
                 Find your favourite actors
             </h1>
-            <h2 className="text-night-700/50 dark:text-cream-50/50 text-[1rem] leading-4 md:text-[1.4rem] md:leading-6 mx-auto text-center max-w-2xl my-10">
+            <h2 className="text-night-700/50 dark:text-cream-50/50 text-[1rem] leading-4 md:text-[1.4rem] md:leading-6 mx-auto text-center max-w-2xl mb-10">
                 Discover actors loved by your friends and community.
             </h2>
             <Suspense fallback={<Spinner />}>
