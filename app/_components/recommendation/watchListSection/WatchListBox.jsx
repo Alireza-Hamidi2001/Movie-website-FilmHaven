@@ -1,4 +1,4 @@
-import { FaStar } from "react-icons/fa";
+import { FaImage, FaStar } from "react-icons/fa";
 import WatchListDiscoverMoreBtn from "./WatchListDiscoverMoreBtn";
 import { BsCalendarDate } from "react-icons/bs";
 import Link from "next/link";
@@ -14,13 +14,19 @@ function WatchListBox({ items, onDiscoverMore, loadingMore }) {
                     className="flex gap-2 md:gap-3 items-center"
                 >
                     <div className="relative w-18 h-24 rounded-sm overflow-hidden bg-cream-300 dark:bg-night-800 flex items-center justify-center">
-                        <Image
-                            fill
-                            unoptimized
-                            src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
-                            alt={item.title}
-                            className="object-cover text-night-700/70 dark:text-cream-50/50"
-                        />
+                        {item.poster_path ? (
+                            <Image
+                                fill
+                                unoptimized
+                                src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
+                                alt={item.title}
+                                className="object-cover text-night-700/70 dark:text-cream-50/50"
+                            />
+                        ) : (
+                            <div className="absolute flex items-center justify-center w-full h-full bg-cream-300 dark:bg-night-950 ">
+                                <FaImage className="w-7 h-7 text-night-700 dark:text-cream-50" />
+                            </div>
+                        )}
                     </div>
                     <div className="flex-1">
                         <p className="text-night-700 dark:text-cream-50 font-medium text-sm leading-3.5 mb-2">

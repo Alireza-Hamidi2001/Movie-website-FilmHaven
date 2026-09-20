@@ -1,6 +1,6 @@
 import { michroma } from "@/app/layout";
 import Link from "next/link";
-import { FaSearch } from "react-icons/fa";
+import { FaHome, FaSearch } from "react-icons/fa";
 
 const GOLD = "#E8B463";
 
@@ -34,8 +34,8 @@ export default function NotFound() {
                     href="/"
                     className="inline-flex items-center gap-2 text-sm font-medium rounded-full px-6 py-3 bg-cream-200 dark:bg-night-900 hover:opacity-90 transition-opacity"
                 >
-                    <FaSearch style={{ color: GOLD }} />
-                    <span>Search again</span>
+                    <FaHome style={{ color: GOLD }} />
+                    <span>Home</span>
                 </Link>
             </div>
         </div>

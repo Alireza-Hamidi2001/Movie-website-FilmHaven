@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FaStar } from "react-icons/fa";
+import { FaImage, FaStar } from "react-icons/fa";
 
 function LatestBox({ items }) {
     return (
@@ -12,13 +12,19 @@ function LatestBox({ items }) {
                     className="flex flex-col gap-3 items-center"
                 >
                     <div className="relative w-32 h-48 rounded-md overflow-hidden bg-cream-300 dark:bg-night-800 flex items-center justify-center">
-                        <Image
-                            fill
-                            unoptimized
-                            src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
-                            alt={item.title}
-                            className="object-cover text-night-700/70 dark:text-cream-50/50"
-                        />
+                        {item.poster_path ? (
+                            <Image
+                                fill
+                                unoptimized
+                                src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
+                                alt={item.title}
+                                className="object-cover text-night-700/70 dark:text-cream-50/50"
+                            />
+                        ) : (
+                            <div className="absolute flex items-center justify-center w-full h-full bg-cream-300 dark:bg-night-950 ">
+                                <FaImage className="w-10 h-10 text-night-700 dark:text-cream-50"/>
+                            </div>
+                        )}
                     </div>
                     <div className="flex-1 text-center">
                         <p className="text-night-700 dark:text-cream-50 font-medium text-[1.2rem] leading-5 mb-2">
