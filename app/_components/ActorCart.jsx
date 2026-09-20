@@ -1,6 +1,11 @@
 import { michroma } from "@/app/layout";
 import Link from "next/link";
-import { FaBirthdayCake, FaFilm, FaMapMarkerAlt, FaRegImage } from "react-icons/fa";
+import {
+    FaBirthdayCake,
+    FaFilm,
+    FaMapMarkerAlt,
+    FaRegImage,
+} from "react-icons/fa";
 
 const GOLD = "#E8B463";
 
@@ -100,18 +105,27 @@ function ActorCart({ actorSelected }) {
                     )}
                 </div>
 
-                {bio && (
-                    <div className="mb-10">
-                        <h2
-                            className={`${michroma.className} text-[1rem] uppercase text-night-700/70 dark:text-cream-50/50 tracking-wide mb-3`}
-                        >
-                            Biography
+                <div className="mb-10">
+                    {bio ? (
+                        <>
+                            <h2
+                                className={`${michroma.className} text-[1rem] uppercase text-night-700/70 dark:text-cream-50/50 tracking-wide mb-3`}
+                            >
+                                Biography
+                            </h2>
+                            <p className="text-[1rem] md:text-[1.2rem] lg:text-[1.3rem] md:leading-8 leading-6 text-night-700 dark:text-cream-50/80 whitespace-pre-line transition-all">
+                                {bio}
+                            </p>
+                        </>
+                    ) : (
+                        <h2 className="text-[1rem] uppercase text-night-700/70 dark:text-cream-50/50 tracking-wide mb-3">
+                            &bull; There is no other information about{" "}
+                            <span className="text-[1.4rem] font-semibold">
+                                {actorSelected.name}
+                            </span>
                         </h2>
-                        <p className="text-[1rem] md:text-[1.2rem] lg:text-[1.3rem] md:leading-8 leading-6 text-night-700 dark:text-cream-50/80 whitespace-pre-line transition-all">
-                            {bio}
-                        </p>
-                    </div>
-                )}
+                    )}
+                </div>
 
                 {cast.length > 0 && (
                     <div>
@@ -138,7 +152,7 @@ function ActorCart({ actorSelected }) {
                                         <img
                                             src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
                                             alt="writer image"
-                                            className="rounded-full w-full h-full bg-cream-300 dark:bg-night-700 object-cover object-center"
+                                            className=" w-full h-full bg-cream-300 dark:bg-night-700 object-cover object-center"
                                         />
                                     </div>
                                     <p className="text-xs mt-2 leading-tight line-clamp-2 text-night-700/80 dark:text-cream-50/70">

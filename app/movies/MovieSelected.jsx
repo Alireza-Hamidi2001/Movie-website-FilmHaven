@@ -1,13 +1,10 @@
-import { getMovieDetails } from "@/lib/tmdb";
-import Image from "next/image";
+import Link from "next/link";
 import { BiWorld } from "react-icons/bi";
 import { BsCalendarDate } from "react-icons/bs";
+import { FaUser } from "react-icons/fa";
 import { IoMdTime } from "react-icons/io";
 import { MdOutlineSpatialAudioOff } from "react-icons/md";
 import { michroma } from "../layout";
-import Link from "next/link";
-import userImage from "@/public/user.png";
-import { FaUser } from "react-icons/fa";
 
 export default async function MovieSelected({ movieSelected }) {
     const director = movieSelected.credits?.crew?.find(
@@ -17,18 +14,18 @@ export default async function MovieSelected({ movieSelected }) {
         (person) => person.job === "Writer",
     );
     const crew = movieSelected.credits?.crew?.slice(0, 10) || [];
-    const cast = movieSelected.credits?.cast?.slice(0, 10) || [];
+    const cast = movieSelected.credits?.cast?.slice(0, 20) || [];
     const status = movieSelected.status;
     // images
-    const writerProfile_path = writer?.profile_path ?? userImage;
-    const directorProfile_path = director?.profile_path ?? userImage;
+    const writerProfile_path = writer?.profile_path;
+    const directorProfile_path = director?.profile_path;
     const posterUrl = movieSelected.poster_path
         ? `https://image.tmdb.org/t/p/w500${movieSelected.poster_path}`
         : null;
 
     return (
         <div className="relative mt-[4rem] min-h-[calc(100vh-4rem)] w-full shadow-xl overflow-hidden md:flex">
-            <p className="absolute top-4 right-4 rounded-full px-2 bg-green-200 text-green-900">
+            <p className="absolute z-30 top-8 right-8 rounded-full px-2 bg-green-200 text-green-900">
                 {status}
             </p>
             <div className="relative h-[90vh] md:max-w-[50vw] mx-auto md:h-[calc(100vh-4rem)] md:sticky md:top-16">
@@ -135,17 +132,17 @@ export default async function MovieSelected({ movieSelected }) {
                             className="flex gap-2 items-center text-[1.2rem] text-night-700 dark:text-cream-50 font-medium"
                         >
                             <div className="relative w-15 h-15 overflow-hidden rounded-full">
-                                {!directorProfile_path && (
+                                {!director.profile_path ? (
                                     <div className="absolute flex items-center justify-center text-sm top-0 bg-cream-300 dark:bg-night-700 z-10 w-full h-full">
                                         <FaUser className="w-7 h-7" />
                                     </div>
+                                ) : (
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/w185${directorProfile_path}`}
+                                        alt="writer image"
+                                        className="rounded-full bg-cream-300 dark:bg-night-700 object-cover object-center"
+                                    />
                                 )}
-
-                                <img
-                                    src={`https://image.tmdb.org/t/p/w185${directorProfile_path}`}
-                                    alt="writer image"
-                                    className="rounded-full bg-cream-300 dark:bg-night-700 object-cover object-center"
-                                />
                             </div>
                             {director.name}
                         </Link>
@@ -163,16 +160,17 @@ export default async function MovieSelected({ movieSelected }) {
                             className="flex gap-2 items-center text-[1.2rem] text-night-700 dark:text-cream-50 font-medium"
                         >
                             <div className="relative z-0 w-15 h-15 overflow-hidden rounded-full">
-                                {!writerProfile_path && (
+                                {!writer.profile_path ? (
                                     <div className="absolute flex items-center justify-center text-sm top-0 bg-cream-300 dark:bg-night-700 z-10 w-full h-full">
                                         <FaUser className="w-7 h-7" />
                                     </div>
+                                ) : (
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/w185${writerProfile_path}`}
+                                        alt="writer image"
+                                        className="rounded-full w-full h-full bg-cream-300 dark:bg-night-700 object-cover object-center"
+                                    />
                                 )}
-                                <img
-                                    src={`https://image.tmdb.org/t/p/w185${writerProfile_path}`}
-                                    alt="writer image"
-                                    className="rounded-full w-full h-full bg-cream-300 dark:bg-night-700 object-cover object-center"
-                                />
                             </div>
                             {writer.name}
                         </Link>
@@ -195,16 +193,17 @@ export default async function MovieSelected({ movieSelected }) {
                                     //  border border-cream-300 dark:border-night-800"
                                 >
                                     <div className="relative w-15 h-15 overflow-hidden rounded-full">
-                                        {!actor.profile_path && (
+                                        {!actor.profile_path ? (
                                             <div className="absolute flex items-center justify-center text-sm top-0 bg-cream-300 dark:bg-night-700 z-10 w-full h-full">
                                                 <FaUser className="w-7 h-7" />
                                             </div>
+                                        ) : (
+                                            <img
+                                                src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
+                                                alt={actor.name}
+                                                className="w-15 h-15 rounded-full object-cover object-top"
+                                            />
                                         )}
-                                        <img
-                                            src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
-                                            alt={actor.name}
-                                            className="w-15 h-15 rounded-full object-cover object-top"
-                                        />{" "}
                                     </div>
                                     <p className="text-night-700 dark:text-cream-50 font-semibold">
                                         {actor.name}

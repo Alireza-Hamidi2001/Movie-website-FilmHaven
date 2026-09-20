@@ -35,7 +35,6 @@ function MobileMenu() {
 
     return (
         <>
-            {/* <SearchInput /> */}
             {/* Hamburger Button */}
             <SearchInputMobile
                 isSearchOpen={isSearchOpen}
@@ -46,7 +45,7 @@ function MobileMenu() {
                 className="flex flex-row-reverse lg:hidden cursor-pointer text-right"
                 aria-label="Open menu"
             >
-                <FiMenu className="text-ink-400 dark:text-cream-50 w-10 h-10 text-right" />
+                <FiMenu className="text-ink-900 dark:text-cream-50 w-10 h-10 text-right" />
             </button>
 
             {/* Backdrop (Blur Background) */}
