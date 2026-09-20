@@ -1,26 +1,35 @@
+"use client";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
+const navigations = [
+    { id: 1, href: "movies", link: "/movies" },
+    { id: 2, href: "about", link: "/about" },
+    { id: 3, href: "contact", link: "/contact" },
+];
+
 function Navigation() {
+    const pathName = usePathname();
+
     return (
         <ul className="hidden lg:flex gap-6 text-gray-300/70 ">
-            <Link
-                href="/movies"
-                className="transition-all duration-300 text-ink-400 dark:text-cream-50"
-            >
-                <li>Movies</li>
-            </Link>
-            <Link
-                href="/about"
-                className="transition-all duration-300 text-ink-400 dark:text-cream-50"
-            >
-                <li>About us</li>
-            </Link>
-            <Link
-                href="/contact"
-                className="transition-all duration-300 text-ink-400 dark:text-cream-50"
-            >
-                <li>Contact</li>
-            </Link>
+            {navigations.map((navigation) => (
+                <Link
+                    key={navigation.id}
+                    href={`${navigation.link}`}
+                    className="transition-all duration-300 uppercase"
+                >
+                    <li
+                        className={`${
+                            pathName === navigation.link
+                                ? "text-red-400 dark:text-red-400"
+                                : "text-night-700/70 dark:text-cream-50/50"
+                        }`}
+                    >
+                        {navigation.href}
+                    </li>
+                </Link>
+            ))}
         </ul>
     );
 }
