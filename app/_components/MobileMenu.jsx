@@ -81,9 +81,9 @@ function MobileMenu() {
                                 <Link
                                     href={menu_item.link}
                                     onClick={() => setIsOpen(false)}
-                                    className={`block text-[1.4rem] rounded-sm transition-all duration-200 hover:bg-white/20 ${
+                                    className={`block text-[1.4rem] px-2 transition-all duration-200 hover:bg-white/20 ${
                                         pathName === menu_item.link
-                                            ? "text-night-700 dark:text-cream-300 bg-red-400/60"
+                                            ? "text-red-400/60 dark:text-red-400/60 border-l-2 border-red-400/60"
                                             : "text-night-700/70 dark:text-cream-50/50"
                                     }`}
                                 >

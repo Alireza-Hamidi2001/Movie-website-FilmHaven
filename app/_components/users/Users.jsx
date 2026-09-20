@@ -1,6 +1,7 @@
 import { michroma } from "@/app/layout";
 import users from "@/public/users.png";
 import Image from "next/image";
+import Link from "next/link";
 
 function Users() {
     return (
@@ -28,9 +29,12 @@ function Users() {
                     your friends preferences.
                 </h2>
                 <div className="flex flex-col md:flex-row w-[70%] md:w-full mx-auto md:mx-0 gap-4">
-                    <button className="text-cream-50 dark:text-night-700 bg-night-700 hover:bg-night-700     dark:hover:bg-cream-200  dark:bg-cream-300 px-4 py-2 rounded-full cursor-pointer transition-all duration-300 hover:-translate-y-1">
+                    <Link
+                        href="/login"
+                        className="text-cream-50 dark:text-night-700 bg-night-700 hover:bg-night-700     dark:hover:bg-cream-200  dark:bg-cream-300 px-4 py-2 rounded-full cursor-pointer transition-all duration-300 hover:-translate-y-1"
+                    >
                         Create an account
-                    </button>
+                    </Link>
                     <button className="text-night-700 dark:text-cream-50 border border-night-700 dark:border-cream-200 px-4 py-2 rounded-full cursor-pointer hover:bg-night-700  dark:hover:bg-cream-200 hover:text-cream-200 dark:hover:text-night-700 transition-all duration-300 hover:-translate-y-1">
                         Learn more
                     </button>
