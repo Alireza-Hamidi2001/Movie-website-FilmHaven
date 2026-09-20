@@ -5,6 +5,7 @@ import { FaBell, FaRegMoon, FaRegSun } from "react-icons/fa";
 import { FiLogIn } from "react-icons/fi";
 import SearchModal from "./SearchModal";
 import SearchInput from "./SearchInput";
+import Link from "next/link";
 
 function HeaderActions() {
     const [theme, setTheme] = useState("dark");
@@ -60,12 +61,13 @@ function HeaderActions() {
                     </button>
                 </li>
 
-                <button
+                <Link
+                    href="/login"
                     className="p-2 rounded-lg hover:bg-cream-300 dark:hover:bg-night-700
                         text-ink-400 dark:text-cream-50 transition-colors duration-300"
                 >
                     <FiLogIn className="w-5 h-5" />
-                </button>
+                </Link>
             </ul>
 
             <SearchModal
