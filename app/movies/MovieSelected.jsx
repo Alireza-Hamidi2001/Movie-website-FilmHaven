@@ -25,7 +25,7 @@ export default async function MovieSelected({ movieSelected }) {
 
     return (
         <div className="relative mt-[4rem] min-h-[calc(100vh-4rem)] w-full shadow-xl overflow-hidden md:flex">
-            <p className="absolute z-30 top-8 right-8 rounded-full px-2 bg-green-200 text-green-900">
+            <p className="absolute z-30 top-4 md:top-8 right-4 md:right-8 rounded-full px-4 bg-green-200 text-green-900">
                 {status}
             </p>
             <div className="relative h-[90vh] max-w-[95vw] md:max-w-[50vw] mx-auto md:h-[calc(100vh-4rem)] md:sticky md:top-16">
