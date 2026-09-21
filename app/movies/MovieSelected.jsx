@@ -189,7 +189,7 @@ export default async function MovieSelected({ movieSelected }) {
                                 <Link
                                     href={`/actors/${actor.id}`}
                                     key={actor.id}
-                                    className="flex flex-col items-center gap-2 text-[0.8rem] text-night-700/90 dark:text-cream-50/70 bg-cream-200 dark:bg-night-900 rounded-sm px-2 md:px-4 py-2"
+                                    className="flex flex-col items-center gap-2 text-[0.8rem] text-night-700/90 dark:text-cream-50/70 bg-cream-100 dark:bg-night-900 rounded-sm px-2 md:px-4 py-2"
                                     //  border border-cream-300 dark:border-night-800"
                                 >
                                     <div className="relative w-15 h-15 overflow-hidden rounded-full">
