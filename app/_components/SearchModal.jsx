@@ -5,6 +5,10 @@ import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
 import { IoSearch, IoClose } from "react-icons/io5";
 import Link from "next/link";
+import SpinnerMini from "./SpinnerMini";
+import { RiErrorWarningFill } from "react-icons/ri";
+import { VscErrorCompact } from "react-icons/vsc";
+import { FaImage } from "react-icons/fa";
 
 function SearchModal({ isOpen, onClose }) {
     const [query, setQuery] = useState("");
@@ -103,7 +107,7 @@ function SearchModal({ isOpen, onClose }) {
             onClick={onClose}
         >
             <div
-                className="border-2 border-night-700/70 dark:border-cream-200/20 bg-cream-50/50 dark:bg-night-700 fixed z-30 w-[80vw] md:w-full md:max-w-xl mt-12 mx-4 p-2 rounded-lg overflow-hidden max-h-[80vh] md:h-fit"
+                className="border-2 border-night-700/70 dark:border-cream-200/20 bg-cream-50/50 dark:bg-night-700 fixed z-30 w-[80vw] md:w-full md:max-w-xl mt-12 mx-4 p-2 rounded-lg overflow-y-scroll max-h-[90vh] md:max-h-[80vh] md:h-fit"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* اینپوت */}
@@ -127,18 +131,42 @@ function SearchModal({ isOpen, onClose }) {
                 </div>
 
                 {/* نتایج */}
-                <div className="max-h-[80vh] grid grid-cols-1 md:grid-cols-2 md:grid-4 overflow-y-auto">
+                <div className="min-h-[20vh] grid grid-cols-1 md:grid-cols-2 gap-2 overflow-y-auto">
                     {loading && (
-                        <p className="text-center text-sm text-night-700 dark:text-cream-50 py-6">
-                            Searching ...
+                        <p className="mx-4 max-w-[fit] flex items-center gap-2 text-center text-sm text-night-700 dark:text-cream-50 py-6">
+                            <SpinnerMini /> Searching ...
                         </p>
                     )}
 
                     {!loading && query && results.length === 0 && (
-                        <p className="text-center text-sm text-night-700/50 dark:text-cream-50/40 py-6">
-                            Nothing found
+                        <p className="flex items-center gap-1 text-center text-lg text-night-700/70 dark:text-cream-50/50 py-6">
+                            <VscErrorCompact className="w-6 h-6" /> Nothing
+                            found
                         </p>
                     )}
+
+                    {/* //
+
+
+                        <div className="relative w-18 h-24 rounded-sm overflow-hidden bg-cream-300 dark:bg-night-800 flex items-center justify-center">
+                                                {item.poster_path ? (
+                                                    <Image
+                                                        fill
+                                                        unoptimized
+                                                        src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
+                                                        alt={item.title}
+                                                        className="object-cover text-night-700/70 dark:text-cream-50/50"
+                                                    />
+                                                ) : (
+                                                    <div className="absolute flex items-center justify-center w-full h-full bg-cream-300 dark:bg-night-950 ">
+                                                        <FaImage className="w-7 h-7 text-night-700 dark:text-cream-50" />
+                                                    </div>
+                                                )}
+                                            </div>
+
+
+
+*/}
 
                     {!loading &&
                         results.map((movie) => (
@@ -148,15 +176,21 @@ function SearchModal({ isOpen, onClose }) {
                                 className="flex gap-4 bg-cream-200 dark:bg-night-800 mt-2 rounded-sm border border-cream-300 dark:border-night-700"
                                 onClick={onClose}
                             >
-                                <img
-                                    src={
-                                        movie.poster_path
-                                            ? `https://image.tmdb.org/t/p/w92${movie.poster_path}`
-                                            : "https://via.placeholder.com/46x64?text=No+Image"
-                                    }
-                                    alt={movie.title}
-                                    className="w-20 h-27 object-cover rounded-md flex-shrink-0"
-                                />
+                                {movie.poster_path ? (
+                                    <img
+                                        src={
+                                            movie.poster_path
+                                                ? `https://image.tmdb.org/t/p/w92${movie.poster_path}`
+                                                : "https://via.placeholder.com/46x64?text=No+Image"
+                                        }
+                                        alt={movie.title}
+                                        className="w-20 h-27 object-cover rounded-sm flex-shrink-0"
+                                    />
+                                ) : (
+                                    <div className="w-20 h-27 flex items-center justify-center bg-cream-300 dark:bg-night-950 ">
+                                        <FaImage className="w-6 h-6 text-night-700 dark:text-cream-50" />
+                                    </div>
+                                )}
                                 <div className="h-full flex flex-col py-2">
                                     <p className="text-[1.2rem] leading-5 font-medium text-night-700 dark:text-cream-50">
                                         {movie.title}
