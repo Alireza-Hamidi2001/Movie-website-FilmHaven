@@ -26,7 +26,7 @@ function MobileHeaderActions() {
 
     return (
         <>
-            <ul className="absolute bottom-4 flex justify-center left-[50%] translate-x-[-50%]">
+            <ul className="absolute bottom-16 flex justify-center left-[50%] translate-x-[-50%]">
                 <li className="relative">
                     <button
                         className="p-2 rounded-lg hover:bg-cream-300 dark:hover:bg-night-700
