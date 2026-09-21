@@ -45,7 +45,7 @@ function ActorCart({ actorSelected }) {
 
     return (
         <div className="mt-16 min-h-[calc(100vh-4rem)] text-night-700 dark:text-cream-50 md:grid md:grid-cols-1  lg:grid-cols-[2fr_3fr]">
-            <div className="relative h-[80vh] max-w-[95vw] md:max-w-[50vw] mx-auto md:h-[calc(100vh-4rem)] md:sticky md:top-16">
+            <div className="relative h-[80vh] max-w-[85vw] md:max-w-[50vw] mx-auto md:h-[calc(100vh-4rem)] md:sticky md:top-16">
                 {posterUrl ? (
                     <img
                         src={posterUrl}
