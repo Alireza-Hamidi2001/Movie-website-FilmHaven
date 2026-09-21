@@ -34,6 +34,7 @@ function formatDate(dateStr) {
 }
 
 function ActorCart({ actorSelected }) {
+    console.log(actorSelected);
     const posterUrl = actorSelected.profile_path
         ? `https://image.tmdb.org/t/p/w500${actorSelected.profile_path}`
         : null;
@@ -44,7 +45,6 @@ function ActorCart({ actorSelected }) {
 
     return (
         <div className="mt-16 min-h-[calc(100vh-4rem)] text-night-700 dark:text-cream-50 md:grid md:grid-cols-1  lg:grid-cols-[2fr_3fr]">
-            {/* پوستر: سمت چپ و sticky روی دسکتاپ، بالای صفحه روی موبایل */}
             <div className="relative h-[90vh] md:max-w-[50vw] mx-auto md:h-[calc(100vh-4rem)] md:sticky md:top-16">
                 {posterUrl ? (
                     <img
@@ -63,7 +63,6 @@ function ActorCart({ actorSelected }) {
                 {/* گرادیان بالا برای حالت موبایل/تبلت کوچک (نام بالا‌چپ) */}
                 <div className="absolute inset-0 bg-linear-to-b from-night-950/70 via-transparent to-transparent lg:hidden" />
 
-                {/* نام و حرفه بازیگر - همیشه روی خود عکس */}
                 <div className="absolute left-0 p-6 top-0 lg:top-auto lg:bottom-0">
                     <h1
                         className={`${michroma.className} text-2xl text-cream-50 drop-shadow-lg`}
@@ -79,26 +78,26 @@ function ActorCart({ actorSelected }) {
                 </div>
             </div>
 
-            {/* محتوا: سمت راست روی دسکتاپ، زیر عکس روی موبایل */}
+            {/* personal info content box */}
             <div className="px-2 md:px-6 py-8 lg:px-10 lg:py-12 max-w-4xl">
                 <div className="flex flex-wrap justify-center md:self-start gap-1 md:gap-3 mb-8">
                     {actorSelected.birthday && (
-                        <div className="flex items-center gap-2 text-sm bg-cream-200 dark:bg-night-900 rounded-full px-4 py-2">
+                        <div className="flex items-center gap-2 text-sm bg-cream-300 dark:bg-night-800 rounded-full px-4 py-2">
                             <FaBirthdayCake style={{ color: GOLD }} />
                             <span>
                                 {formatDate(actorSelected.birthday)}
-                                {age !== null && (
+                                {/* {age !== null && (
                                     <span className="text-night-700/60 dark:text-cream-50/50">
                                         {" "}
                                         &middot; {age} yrs
                                     </span>
-                                )}
+                                )} */}
                             </span>
                         </div>
                     )}
 
                     {actorSelected.place_of_birth && (
-                        <div className="flex items-center gap-2 text-sm bg-cream-200 dark:bg-night-900 rounded-full px-4 py-2">
+                        <div className="flex items-center gap-2 text-sm bg-cream-300 dark:bg-night-800 rounded-full px-4 py-2">
                             <FaMapMarkerAlt style={{ color: GOLD }} />
                             <span>{actorSelected.place_of_birth}</span>
                         </div>
