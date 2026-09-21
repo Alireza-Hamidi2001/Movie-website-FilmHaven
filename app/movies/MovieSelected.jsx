@@ -109,7 +109,7 @@ export default async function MovieSelected({ movieSelected }) {
                     {movieSelected.genres?.map((genre) => (
                         <p
                             key={genre.id}
-                            className="flex items-center  gap-1 text-[0.9rem] text-night-700/90 dark:text-cream-50/70 bg-cream-50 dark:bg-night-900 rounded-sm w-full md:max-w-fit px-2 md:px-4 py-1 md:py-2 border border-cream-300 dark:border-night-800 max-w-fit"
+                            className="flex items-center  gap-1 text-[0.9rem] text-night-700/90 dark:text-cream-50/70 bg-cream-50 dark:bg-night-900 rounded-sm w-full md:max-w-fit px-2 md:px-3 py-1 md:py-2 border border-cream-300 dark:border-night-800 max-w-fit"
                         >
                             {genre.name}
                         </p>
@@ -184,7 +184,7 @@ export default async function MovieSelected({ movieSelected }) {
                         >
                             Actors :
                         </h2>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-1 md:gap-2">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 md:gap-2">
                             {cast.map((actor) => (
                                 <Link
                                     href={`/actors/${actor.id}`}
