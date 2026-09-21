@@ -28,7 +28,7 @@ export default async function MovieSelected({ movieSelected }) {
             <p className="absolute z-30 top-8 right-8 rounded-full px-2 bg-green-200 text-green-900">
                 {status}
             </p>
-            <div className="relative h-[90vh] max-w-[95vw] md:max-w-[50vw] mx-auto md:h-[calc(100vh-4rem)] md:sticky md:top-16">
+            <div className="relative h-[90vh] max-w-[85vw] md:max-w-[50vw] mx-auto md:h-[calc(100vh-4rem)] md:sticky md:top-16">
                 {posterUrl ? (
                     <img
                         src={posterUrl}
