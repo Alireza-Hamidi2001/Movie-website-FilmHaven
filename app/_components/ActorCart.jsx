@@ -119,7 +119,7 @@ function ActorCart({ actorSelected }) {
                         </>
                     ) : (
                         <h2 className="text-[1rem] uppercase text-night-700/70 dark:text-cream-50/50 tracking-wide mb-3">
-                            &bull; There is no other information about{" "}
+                            &bull; There is no other information about
                             <span className="text-[1.4rem] font-semibold">
                                 {actorSelected.name}
                             </span>
@@ -135,7 +135,7 @@ function ActorCart({ actorSelected }) {
                             <FaFilm /> Known For
                         </h2>
 
-                        <div className="grid grid-cols-3 gap-2 md:flex md:gap-4 overflow-x-auto pb-2  md:-mx-10 md:px-10 lg:mx-0 lg:px-0 scrollbar-thin">
+                        <div className="grid grid-cols-3 gap-2 md:flex md:gap-4 overflow-x-auto pb-2  md:-mx-10 md:px-10 lg:mx-0 lg:px-0 scrollbar-thumb-amber-50">
                             {cast.map((movie) => (
                                 <Link
                                     href={`/movies/${movie.id}`}
